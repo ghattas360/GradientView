@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Options Desks — GradientView</title>
+<meta name="description" content="Six desks that read the options market: volatility premium, dealer gamma positioning, implied distributions, event pricing, surface arbitrage, and flow — every metric graded by how much the evidence supports it.">
+<link rel="stylesheet" href="theme.css">
+<style>
+  /* page hero */
+  .page-hero{max-width:var(--maxw);margin:0 auto;padding:56px 24px 40px}
+  .page-hero .lead{max-width:64ch}
+
+  /* evidence legend strip */
+  .evleg{max-width:var(--maxw);margin:0 auto 8px;padding:0 24px}
+  .evleg-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .evleg-cell{background:var(--panel);padding:16px 16px}
+  .evleg-cell .bt{margin-bottom:8px}
+  .evleg-cell p{font-size:13.5px;color:var(--muted);line-height:1.55}
+
+  /* desk block */
+  .desk-block{max-width:var(--maxw);margin:0 auto;padding:26px 24px}
+  .desk-block+.desk-block{border-top:1px solid var(--line)}
+  .desk-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;flex-wrap:wrap}
+  .desk-idx{font-family:var(--mono);font-size:13.5px;color:var(--amber);letter-spacing:.08em}
+  .desk-block h2{font-family:var(--serif);font-weight:700;font-size:32px;letter-spacing:-.01em;margin:0}
+  .desk-q{font-family:var(--serif);font-style:italic;font-size:21px;color:var(--muted);margin-bottom:18px}
+  .desk-block>.desk-intro{font-size:17px;color:var(--muted);max-width:70ch;margin-bottom:24px}
+
+  /* metric rows */
+  .metrics{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .metric{background:var(--panel);padding:18px 20px;display:grid;grid-template-columns:240px 1fr auto;gap:24px;align-items:start}
+  .metric .mname{font-family:var(--serif);font-weight:600;font-size:18.5px}
+  .metric .mname .msub{display:block;font-family:var(--mono);font-size:12px;color:var(--dim);letter-spacing:.04em;margin-top:3px;text-transform:uppercase}
+  .metric .mdesc{font-size:15.5px;color:var(--muted);line-height:1.6}
+  .metric .mdesc .cite{color:var(--dim);font-style:italic}
+  .metric .mbadge{justify-self:end;white-space:nowrap}
+  .metric.free-hook{border-left:2px solid var(--up)}
+
+  /* interpretation callout */
+  .interp-demo{margin-top:22px;border:1px solid var(--line-2);background:var(--panel-2)}
+  .interp-demo .ih{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);padding:9px 14px;border-bottom:1px solid var(--line)}
+  .interp-demo .ib{padding:15px 17px;font-family:var(--mono);font-size:14px;line-height:1.65;color:var(--text)}
+  .interp-demo .ib .tag{color:var(--amber);margin-right:7px}
+
+  /* cta */
+  .desks-cta{max-width:var(--maxw);margin:0 auto;padding:60px 24px;text-align:center;border-top:1px solid var(--line)}
+
+  @media(max-width:820px){
+    .evleg-grid{grid-template-columns:1fr 1fr}
+    .metric{grid-template-columns:1fr;gap:8px}
+    .metric .mbadge{justify-self:start}
+  }
+</style>
+</head>
+<body data-theme="dark">
+<script>try{var _t=localStorage.getItem('gv-theme');if(_t){document.body.setAttribute('data-theme',_t);window.__gvTheme=_t;}}catch(e){}</script>
+
+<header class="page-hero">
+  <div class="eyebrow">The options desks</div>
+  <h1 class="h1">Read the options market<br>like a quant, <span class="fade">not a firehose.</span></h1>
+  <p class="lead">Six desks, each answering one question. Every metric is computed from the same option chains — and every one carries an evidence badge, so you always know which of our own numbers to trust. We read the research so you don't have to.</p>
+</header>
+
+<!-- evidence legend -->
+<section class="evleg">
+  <div class="evleg-grid">
+    <div class="evleg-cell"><div class="bt"><span class="badge durable">Durable</span></div><p>Replicated out-of-sample, with a clear economic mechanism. Trust it.</p></div>
+    <div class="evleg-cell"><div class="bt"><span class="badge conditional">Conditional</span></div><p>Real, but model-dependent — the signal rests on assumptions you can inspect.</p></div>
+    <div class="evleg-cell"><div class="bt"><span class="badge decayed">Decayed</span></div><p>Was real in-sample; faded after publication. Context, not edge.</p></div>
+    <div class="evleg-cell"><div class="bt"><span class="badge folklore">Folklore</span></div><p>Popular in trading culture, weak in the evidence. Shown, and labeled.</p></div>
+    <div class="evleg-cell"><div class="bt"><span class="badge framework">Framework</span></div><p>A discipline or lens, not a backtested return signal.</p></div>
+  </div>
+</section>
+
+<!-- DESK 1 — VOL -->
+<section class="desk-block">
+  <div class="desk-head"><span class="desk-idx">01</span><h2>Vol Desk</h2></div>
+  <div class="desk-q">Is premium rich or cheap, and what regime am I in?</div>
+  <p class="desk-intro">The strongest-evidence desk in the product — and the one premium sellers live in. It reads where implied volatility sits, whether the market is paying you to sell options, and whether the term structure is warning of stress.</p>
+  <div class="metrics">
+    <div class="metric free-hook">
+      <div class="mname">IV rank & percentile<span class="msub">Free hook</span></div>
+      <div class="mdesc">Where current implied vol sits versus its own trailing year — the basic "is premium rich or cheap" gauge. Table stakes, but the doorway everyone starts at.</div>
+      <div class="mbadge"><span class="badge free">Free</span></div>
+    </div>
+    <div class="metric free-hook">
+      <div class="mname">Expected move<span class="msub">ATM straddle</span></div>
+      <div class="mdesc">The market's priced-in move over an option's life, from the at-the-money straddle. The standard earnings-move estimate.</div>
+      <div class="mbadge"><span class="badge durable">Durable</span></div>
+    </div>
+    <div class="metric">
+      <div class="mname">Variance risk premium<span class="msub">IV − realized</span></div>
+      <div class="mdesc">Implied variance systematically exceeds realized — the premium that pays option sellers. High VRP has predicted market returns. <span class="cite">Bollerslev, Tauchen &amp; Zhou (2009); replicated internationally.</span></div>
+      <div class="mbadge"><span class="badge durable">Durable</span></div>
+    </div>
+    <div class="metric">
+      <div class="mname">IV term structure<span class="msub">front vs back</span></div>
+      <div class="mdesc">Contango is the calm default; an inverted (backwardated) curve flags near-term stress and event risk. <span class="cite">Vasquez (2017).</span></div>
+      <div class="mbadge"><span class="badge durable">Durable</span></div>
+    </div>
+    <div class="metric">
+      <div class="mname">VIX regime tool<span class="msub">VIX · VIX3M · VVIX</span></div>
+      <div class="mdesc">Term-structure flips and vol-of-vol identify the volatility regime — the context that tells you whether premium-selling or premium-buying is favored.</div>
+      <div class="mbadge"><span class="badge durable">Durable</span></div>
+    </div>
+  </div>
+  <div class="interp-demo">
+    <div class="ih">What the READ looks like</div>
+    <div class="ib"><span class="tag">READ</span>SPY premium is rich versus its own year and realized vol is falling — the seller's side of the table is being paid. Term structure is in calm contango; no near-term stress priced.</div>
+  </div>
+</section>
+
+<!-- DESK 2 — DEALER -->
+<section class="desk-block">
+  <div class="desk-head"><span class="desk-idx">02</span><h2>Dealer Desk</h2></div>
+  <div class="desk-q">Where are the hedging flows?</div>
+  <p class="desk-intro">Dealer positioning drives mechanical hedging flows that dampen or amplify moves. Every metric here is <strong>model-inferred</strong> — the dealer's side of each trade is estimated, not observed — so each wears a badge and gives you a visible sign-assumption toggle. Honesty is the differentiator against black-box gamma tools.</p>
+  <div class="metrics">
+    <div class="metric">
+      <div class="mname">GEX — gamma by strike<span class="msub">dealer γ map</span></div>
+      <div class="mdesc">Aggregate dealer gamma: positive suppresses volatility (buy dips / sell rips), negative amplifies it. Shows walls and the flip. Effects are real but episodic and conditional. <span class="cite">Cboe-hosted studies; sign must be inferred.</span></div>
+      <div class="mbadge"><span class="badge conditional">Conditional</span></div>
+    </div>
+    <div class="metric">
+      <div class="mname">Gamma flip &amp; walls<span class="msub">regime line</span></div>
+      <div class="mdesc">The price where aggregate gamma crosses zero — above it, calm and mean-reverting; below it, twitchy and trending. Big-OI strikes act as magnets.</div>
+      <div class="mbadge"><span class="badge conditional">Conditional</span></div>
+    </div>
+    <div class="metric">
+      <div class="mname">Vanna &amp; charm exposure<span class="msub">OPEX flows</span></div>
+      <div class="mdesc">How dealer hedges shift as vol changes (vanna) and time decays (charm) — the flows behind OPEX rallies. <span class="cite">Baltussen, Da, Lammers &amp; Martens (2021).</span></div>
+      <div class="mbadge"><span class="badge conditional">Conditional</span></div>
+    </div>
+    <div class="metric">
+      <div class="mname">Expiration pinning<span class="msub">Ni-Pearson-Poteshman</span></div>
+      <div class="mdesc">Optionable stocks cluster at high-OI strikes into expiry, driven by hedge rebalancing — the <em>evidence-based</em> version. Note: the popular "max pain gravitates to max-writer-profit" theory is weakly supported and lives in our education section as folklore. <span class="cite">Ni, Pearson &amp; Poteshman (2005).</span></div>
+      <div class="mbadge"><span class="badge conditional">Conditional</span></div>
+    </div>
+  </div>
+  <div class="interp-demo">
+    <div class="ih">What the READ looks like</div>
+    <div class="ib"><span class="tag">READ</span>Spot sits below the 5588 gamma wall and above the 5578 flip — dealers are long gamma here, pinning price and muting moves. Lose the flip and the tape gets violent.</div>
+  </div>
+</section>
+
+<!-- DESK 3 — PROBABILITY -->
+<section class="desk-block">
+  <div class="desk-head"><span class="desk-idx">03</span><h2>Probability Studio</h2></div>
+  <div class="desk-q">What does the market actually expect?</div>
+  <p class="desk-intro">Options prices encode the market's full probability distribution of where a name will land — not a guess, an identity. This is genuine retail whitespace: almost nobody renders the implied distribution visually.</p>
+  <div class="metrics">
+    <div class="metric">
+      <div class="mname">Risk-neutral density<span class="msub">Breeden-Litzenberger</span></div>
+      <div class="mdesc">The market's full implied probability curve for the underlying at expiry, extracted from butterfly spreads across strikes. Model-free — a mathematical identity, not a forecast model. <span class="cite">Breeden &amp; Litzenberger (1978).</span></div>
+      <div class="mbadge"><span class="badge durable">Durable</span></div>
+    </div>
+    <div class="metric">
+      <div class="mname">Implied skew &amp; kurtosis<span class="msub">model-free moments</span></div>
+      <div class="mdesc">Forward-looking asymmetry and tail-fatness from a strip of OTM options, computed from one day of prices. The extraction is robust; return-prediction use is mixed. <span class="cite">Bakshi, Kapadia &amp; Madan (2003).</span></div>
+      <div class="mbadge"><span class="badge durable">Durable</span></div>
+    </div>
+    <div class="metric">
+      <div class="mname">Implied crash probability<span class="msub">SKEW logic</span></div>
+      <div class="mdesc">Deep-OTM put pricing as a tail-risk gauge — the market's perceived probability of a large downside move. The logic behind the CBOE SKEW index.</div>
+      <div class="mbadge"><span class="badge durable">Durable</span></div>
+    </div>
+  </div>
+  <div class="interp-demo">
+    <div class="ih">What the READ looks like</div>
+    <div class="ib"><span class="tag">READ</span>The market's implied distribution for NVDA into earnings is right-skewed with fat tails — it's pricing a bigger upside surprise than downside, but assigning a real 12% chance to a move beyond ±15%.</div>
+  </div>
+</section>
+
+<!-- DESK 4 — EVENT -->
+<section class="desk-block">
+  <div class="desk-head"><span class="desk-idx">04</span><h2>Event Lab</h2></div>
+  <div class="desk-q">How is this event priced?</div>
+  <p class="desk-intro">Earnings and scheduled events concentrate volatility. This desk compares what options are pricing to what history actually delivered — highly comprehensible, and beatable on interpretation.</p>
+  <div class="metrics">
+    <div class="metric">
+      <div class="mname">Implied vs realized move<span class="msub">earnings</span></div>
+      <div class="mdesc">The pre-event straddle-implied move against the distribution of actual post-earnings moves over prior quarters. Tells you whether the event is over- or under-priced.</div>
+      <div class="mbadge"><span class="badge durable">Durable</span></div>
+    </div>
+    <div class="metric">
+      <div class="mname">IV crush patterns<span class="msub">per name</span></div>
+      <div class="mdesc">The systematic post-event collapse in implied vol — its timing and magnitude per name, the core of event premium-selling.</div>
+      <div class="mbadge"><span class="badge conditional">Conditional</span></div>
+    </div>
+    <div class="metric">
+      <div class="mname">Event variance extraction<span class="msub">term-structure kink</span></div>
+      <div class="mdesc">Isolates the "event-day" volatility embedded in the jump between pre- and post-event expiries. <span class="cite">Dubinsky, Johannes, Kaeck &amp; Seeger (2019).</span></div>
+      <div class="mbadge"><span class="badge durable">Durable</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- DESK 5 — SURFACE -->
+<section class="desk-block">
+  <div class="desk-head"><span class="desk-idx">05</span><h2>Surface Lab</h2><span class="badge framework">Quant tier</span></div>
+  <div class="desk-q">Is the surface itself mispriced?</div>
+  <p class="desk-intro">The advanced desk: fit the whole implied-vol surface, hunt no-arbitrage violations, and extract structural signals that live in the relationships between options rather than any single one.</p>
+  <div class="metrics">
+    <div class="metric">
+      <div class="mname">Skew &amp; risk reversal<span class="msub">25-delta</span></div>
+      <div class="mdesc">The richness of OTM puts vs calls. A fine descriptor of crash pricing — but as a cross-sectional <em>return predictor</em> it has decayed, and much is explained by borrow fees. <span class="cite">Xing, Zhang &amp; Zhao (2010); Muravyev et al. (2025).</span></div>
+      <div class="mbadge"><span class="badge decayed">Decayed</span></div>
+    </div>
+    <div class="metric">
+      <div class="mname">SVI/SSVI surface fit<span class="msub">arbitrage flags</span></div>
+      <div class="mdesc">A parsimonious arbitrage-free fit of the surface, flagging butterfly (negative density) and calendar violations. <span class="cite">Gatheral &amp; Jacquier (2014).</span></div>
+      <div class="mbadge"><span class="badge framework">Framework</span></div>
+    </div>
+    <div class="metric">
+      <div class="mname">Implied borrow fee<span class="msub">put-call parity</span></div>
+      <div class="mdesc">Parity deviations reveal the options-implied cost to borrow a stock — a genuine hard-to-borrow and short-squeeze signal, rare in retail tools. <span class="cite">Ofek et al. (2004); Muravyev et al. (2022).</span></div>
+      <div class="mbadge"><span class="badge durable">Durable</span></div>
+    </div>
+    <div class="metric">
+      <div class="mname">Box-spread funding curve<span class="msub">implied risk-free</span></div>
+      <div class="mdesc">A term structure of implied risk-free rates recovered from SPX box spreads — an options-implied funding gauge. <span class="cite">van Binsbergen, Diamond &amp; Grotteria (2022).</span></div>
+      <div class="mbadge"><span class="badge durable">Durable</span></div>
+    </div>
+    <div class="metric">
+      <div class="mname">Implied correlation<span class="msub">dispersion</span></div>
+      <div class="mdesc">Index IV vs constituent IVs — the dispersion-trade signal and a systemic-fragility gauge.</div>
+      <div class="mbadge"><span class="badge conditional">Conditional</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- DESK 6 — FLOW -->
+<section class="desk-block">
+  <div class="desk-head"><span class="desk-idx">06</span><h2>Flow Room</h2></div>
+  <div class="desk-q">What is sentiment saying — honestly?</div>
+  <p class="desk-intro">This desk exists because traders expect it — but we frame it truthfully. Most single-name "options predict stocks" signals were strong in-sample and faded after publication, or turn out to be borrow-fee artifacts. So the Flow Room is <strong>context, not edge</strong>, and we say so on every metric.</p>
+  <div class="metrics">
+    <div class="metric">
+      <div class="mname">Put/call ratios<span class="msub">volume &amp; OI</span></div>
+      <div class="mdesc">Classic contrarian sentiment. Noisy and weak as a standalone signal — useful as context, not a trigger.</div>
+      <div class="mbadge"><span class="badge folklore">Folklore</span></div>
+    </div>
+    <div class="metric">
+      <div class="mname">O/S ratio<span class="msub">option vs stock volume</span></div>
+      <div class="mdesc">Where option activity runs hot relative to the stock. A real in-sample anomaly that has decayed. <span class="cite">Roll, Schwartz &amp; Subrahmanyam (2010); Johnson &amp; So (2012).</span></div>
+      <div class="mbadge"><span class="badge decayed">Decayed</span></div>
+    </div>
+    <div class="metric">
+      <div class="mname">Call-put IV spread<span class="msub">relative richness</span></div>
+      <div class="mdesc">When calls price richer than puts, stocks historically outperformed — but two-thirds of that vanishes once high-borrow names are excluded. Largely a borrow-fee artifact. <span class="cite">Cremers &amp; Weinbaum (2010); Muravyev, Pearson &amp; Pollet (2025).</span></div>
+      <div class="mbadge"><span class="badge decayed">Decayed</span></div>
+    </div>
+    <div class="metric">
+      <div class="mname">Unusual options activity<span class="msub">sweeps · blocks</span></div>
+      <div class="mdesc">Large or aggressive prints, aggressor-side inferred. Widely sold as "smart money," but largely unvalidated as a return signal — we show it with that caveat attached.</div>
+      <div class="mbadge"><span class="badge folklore">Folklore</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="desks-cta">
+  <div class="eyebrow center">See it on your own book</div>
+  <h2 class="h2 center">Every desk, overlaid on your positions.</h2>
+  <p class="lead center">The desks read the market. The portfolio reads you. Where they meet is where GradientView earns its name — the gamma flip that matters is the one under <em>your</em> short strikes.</p>
+  <p><a class="btn-ghost" href="portfolio.html">See the portfolio desk →</a> &nbsp; <a class="btn-ghost" href="index.html#join">Request access →</a></p>
+</section>
+
+<script src="shared.js"></script>
+</body>
+</html>

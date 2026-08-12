@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learn — GradientView</title>
+<meta name="description" content="The education layer: learning paths, the Signal Atlas, and honest anti-lessons on why popular trading ideas often don't hold up.">
+<link rel="stylesheet" href="theme.css">
+<style>
+  .page-hero{max-width:var(--maxw);margin:0 auto;padding:56px 24px 40px}
+  .page-hero .lead{max-width:64ch}
+
+  .lsec{max-width:var(--maxw);margin:0 auto;padding:48px 24px}
+  .lsec+.lsec{border-top:1px solid var(--line)}
+  .lsec h2{font-family:var(--serif);font-weight:700;font-size:28px;margin-bottom:10px}
+  .lsec .lead{max-width:66ch}
+
+  /* atlas placeholder */
+  .atlas{position:relative;background:var(--panel-3);border:1px solid var(--line-2);min-height:340px;margin-top:8px;overflow:hidden}
+  .atlas svg{width:100%;height:100%;display:block}
+  .atlas-cap{position:absolute;left:20px;bottom:18px;font-family:var(--mono);font-size:11px;color:var(--muted);background:var(--panel-3);padding:6px 10px;border:1px solid var(--line)}
+  .atlas-cap b{color:var(--amber)}
+
+  /* paths */
+  .paths{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:8px}
+  .path{background:var(--panel);padding:24px 22px}
+  .path .pk{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--amber);margin-bottom:8px}
+  .path h3{font-family:var(--serif);font-weight:600;font-size:18px;margin-bottom:10px}
+  .path ol{list-style:none;counter-reset:s}
+  .path li{counter-increment:s;font-size:13px;color:var(--muted);padding:5px 0 5px 24px;position:relative;line-height:1.45}
+  .path li::before{content:counter(s);position:absolute;left:0;top:5px;font-family:var(--mono);font-size:11px;color:var(--amber)}
+
+  /* anti-lessons */
+  .anti{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:8px}
+  .al{background:var(--panel);padding:22px 22px}
+  .al .at{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
+  .al h3{font-family:var(--serif);font-weight:600;font-size:17px}
+  .al p{font-size:14px;color:var(--muted);line-height:1.55}
+  .al p .cite{color:var(--dim);font-style:italic}
+
+  .l-cta{max-width:var(--maxw);margin:0 auto;padding:56px 24px;text-align:center;border-top:1px solid var(--line)}
+  @media(max-width:820px){.paths{grid-template-columns:1fr}.anti{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-theme="dark">
+<script>try{var _t=localStorage.getItem('gv-theme');if(_t){document.body.setAttribute('data-theme',_t);window.__gvTheme=_t;}}catch(e){}</script>
+
+<header class="page-hero">
+  <div class="eyebrow">Learn</div>
+  <h1 class="h1">The education is the product. <span class="fade">Not a bolt-on.</span></h1>
+  <p class="lead">Every metric explains itself in plain language, links to the research behind it, and tells you honestly how much to trust it. Learn by using the tool — or explore the whole map of ideas in the Signal Atlas.</p>
+</header>
+
+<!-- SIGNAL ATLAS -->
+<section class="lsec">
+  <h2>The Signal Atlas</h2>
+  <p class="lead">Every metric, Greek, and concept is a node. Every relationship is an edge — "derives from," "feeds," "predicts," "contradicts." Click a node to see its definition, its evidence grade, its neighbors, and a link to the live tool that computes it. The graph <em>is</em> the glossary: learn one idea by wandering to the ones it connects to.</p>
+  <div class="atlas">
+    <svg viewBox="0 0 900 340" xmlns="http://www.w3.org/2000/svg" aria-label="Signal Atlas concept graph preview">
+      <!-- edges -->
+      <g stroke="#2A3342" stroke-width="1">
+        <line x1="180" y1="90" x2="330" y2="150"/><line x1="330" y1="150" x2="180" y2="230"/>
+        <line x1="330" y1="150" x2="500" y2="90"/><line x1="330" y1="150" x2="520" y2="200"/>
+        <line x1="500" y1="90" x2="680" y2="120"/><line x1="520" y1="200" x2="700" y2="250"/>
+        <line x1="520" y1="200" x2="680" y2="120"/><line x1="180" y1="230" x2="360" y2="280"/>
+        <line x1="360" y1="280" x2="520" y2="200"/><line x1="680" y1="120" x2="760" y2="70"/>
+      </g>
+      <!-- nodes -->
+      <g font-family="IBM Plex Mono, monospace" font-size="10">
+        <circle cx="330" cy="150" r="9" fill="#F0A93B"/><text x="330" y="135" fill="#E9ECF2" text-anchor="middle">IV</text>
+        <circle cx="180" cy="90" r="6" fill="#4A90D9"/><text x="180" y="76" fill="#7E889B" text-anchor="middle">realized vol</text>
+        <circle cx="500" cy="90" r="8" fill="#33C08A"/><text x="500" y="76" fill="#E9ECF2" text-anchor="middle">VRP</text>
+        <circle cx="520" cy="200" r="8" fill="#F0A93B"/><text x="520" y="222" fill="#E9ECF2" text-anchor="middle">IV surface</text>
+        <circle cx="180" cy="230" r="6" fill="#4A90D9"/><text x="180" y="252" fill="#7E889B" text-anchor="middle">term structure</text>
+        <circle cx="680" cy="120" r="7" fill="#33C08A"/><text x="680" y="106" fill="#E9ECF2" text-anchor="middle">skew</text>
+        <circle cx="700" cy="250" r="7" fill="#F0524A"/><text x="700" y="272" fill="#7E889B" text-anchor="middle">RND</text>
+        <circle cx="360" cy="280" r="6" fill="#4A90D9"/><text x="360" y="302" fill="#7E889B" text-anchor="middle">GEX</text>
+        <circle cx="760" cy="70" r="6" fill="#33C08A"/><text x="760" y="56" fill="#7E889B" text-anchor="middle">crash prob</text>
+      </g>
+    </svg>
+    <div class="atlas-cap"><b>Preview</b> — the interactive Atlas ships with the product</div>
+  </div>
+</section>
+
+<!-- LEARNING PATHS -->
+<section class="lsec" id="paths">
+  <h2>Learning paths</h2>
+  <p class="lead">Curated routes through the desks — each chains concepts in the order that actually builds understanding, ending in the live tool.</p>
+  <div class="paths">
+    <div class="path">
+      <div class="pk">For the premium seller</div>
+      <h3>The wheel, done right</h3>
+      <ol>
+        <li>What IV rank really tells you</li>
+        <li>Expected move &amp; the earnings trap</li>
+        <li>The variance risk premium — why selling pays</li>
+        <li>The evidence: BXM &amp; PUT indices</li>
+        <li>Track it: the wheel tracker</li>
+      </ol>
+    </div>
+    <div class="path">
+      <div class="pk">For the options trader</div>
+      <h3>Reading dealer flows</h3>
+      <ol>
+        <li>Gamma, in plain language</li>
+        <li>GEX and the gamma flip</li>
+        <li>Vanna, charm &amp; the OPEX rally</li>
+        <li>Why the dealer sign is inferred, not known</li>
+        <li>Overlay it on your book</li>
+      </ol>
+    </div>
+    <div class="path">
+      <div class="pk">For the risk-aware</div>
+      <h3>Know your real exposure</h3>
+      <ol>
+        <li>Net Greeks across your whole book</li>
+        <li>VaR &amp; CVaR without the mystique</li>
+        <li>The hidden-bets detector</li>
+        <li>Stress tests &amp; historical replays</li>
+        <li>Simulate before you trade</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ANTI-LESSONS -->
+<section class="lsec">
+  <h2>Anti-lessons</h2>
+  <p class="lead">The most trustworthy thing a tool can teach you is what <em>doesn't</em> work. These are the popular ideas the evidence doesn't support — and knowing them protects your capital more than any signal.</p>
+  <div class="anti">
+    <div class="al"><div class="at"><h3>Why lotto-ticket options lose</h3><span class="badge decayed">Decayed</span></div><p>Cheap far-OTM options are systematically overpriced — the lottery preference is compensated to whoever sells it to you, not you. <span class="cite">Boyer &amp; Vorkink (2014).</span></p></div>
+    <div class="al"><div class="at"><h3>Why max pain is folklore</h3><span class="badge folklore">Folklore</span></div><p>Real pinning near expiry comes from dealer hedging (a documented effect). The idea that price "gravitates to the max-writer-profit strike" is a different, weakly-supported claim. <span class="cite">Ni, Pearson &amp; Poteshman (2005).</span></p></div>
+    <div class="al"><div class="at"><h3>Why a Sharpe-5 backtest is lying</h3><span class="badge framework">Method</span></div><p>Common look-ahead filters inflate options-strategy Sharpes from ~0.5 to above 5. A too-good backtest is a red flag, not a discovery. <span class="cite">Duarte, Jones, Khorram, Mo &amp; Wang (2025).</span></p></div>
+    <div class="al"><div class="at"><h3>Why "smart money" flow alerts mislead</h3><span class="badge folklore">Folklore</span></div><p>Unusual-options-activity alerts are widely sold as informed-money signals but are largely unvalidated as return predictors. We show the flow — and the caveat.</p></div>
+  </div>
+</section>
+
+<section class="l-cta">
+  <div class="eyebrow center">Honesty as a feature</div>
+  <h2 class="h2 center">The only tool that tells you which of its own numbers to trust.</h2>
+  <p class="lead center">That's not modesty — it's the whole positioning. Read how the evidence grading works.</p>
+  <p><a class="btn-ghost" href="methodology.html">Read the methodology →</a> &nbsp; <a class="btn-ghost" href="index.html#join">Request access →</a></p>
+</section>
+
+<script src="shared.js"></script>
+</body>
+</html>

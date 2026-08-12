@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — GradientView</title>
+<meta name="description" content="Start free forever. Add only the modules your trading needs, or take a preset stack. Founding members lock lifetime pricing.">
+<link rel="stylesheet" href="theme.css">
+<style>
+  .page-hero{max-width:var(--maxw);margin:0 auto;padding:56px 24px 36px;text-align:center}
+  .page-hero .lead{max-width:56ch;margin-left:auto;margin-right:auto}
+
+  .plans{max-width:var(--maxw);margin:0 auto;padding:8px 24px 20px}
+  .plans-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .plan{background:var(--panel);padding:28px 24px;display:flex;flex-direction:column;position:relative}
+  .plan.hi{background:var(--panel-2)}
+  .plan.hi::after{content:"most popular";position:absolute;top:16px;right:16px;font-family:var(--mono);font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--amber);border:1px solid var(--amber-dim);padding:3px 7px}
+  .plan .pname{font-family:var(--serif);font-weight:700;font-size:19px}
+  .plan .ptag{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);margin:6px 0 14px}
+  .plan .price{font-family:var(--serif);font-size:34px;font-weight:700;letter-spacing:-.01em}
+  .plan .price small{font-size:13px;color:var(--muted);font-weight:400;font-family:var(--sans)}
+  .plan ul{list-style:none;margin:18px 0 22px;flex:1}
+  .plan li{font-size:13.5px;color:var(--muted);padding:6px 0 6px 18px;position:relative;line-height:1.5}
+  .plan li::before{content:"";position:absolute;left:0;top:12px;width:8px;height:2px;background:var(--amber)}
+  .plan.free li::before{background:var(--up)}
+  .plan .pcta{font-family:var(--mono);font-size:12.5px;text-align:center;padding:11px;border:1px solid var(--amber-dim);color:var(--amber);transition:background .15s,color .15s}
+  .plan .pcta:hover{background:var(--amber);color:#07090C}
+  .plan.hi .pcta{background:var(--amber);color:#07090C;border-color:var(--amber)}
+
+  .modules{max-width:var(--maxw);margin:0 auto;padding:48px 24px}
+  .modules h2{font-family:var(--serif);font-weight:700;font-size:28px;margin-bottom:8px}
+  .mod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:24px}
+  .mod{background:var(--panel);padding:20px 20px}
+  .mod .mtop{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+  .mod .mn{font-family:var(--serif);font-weight:600;font-size:16px}
+  .mod .mp{font-family:var(--mono);font-size:13px;color:var(--amber)}
+  .mod p{font-size:13px;color:var(--muted);line-height:1.5}
+
+  .faq{max-width:var(--maxw);margin:0 auto;padding:40px 24px 20px}
+  .faq h2{font-family:var(--serif);font-weight:700;font-size:26px;margin-bottom:20px}
+  .faq-item{border-top:1px solid var(--line);padding:20px 0}
+  .faq-item h3{font-family:var(--serif);font-weight:600;font-size:17px;margin-bottom:6px}
+  .faq-item p{font-size:14.5px;color:var(--muted);line-height:1.6;max-width:76ch}
+
+  .price-note{max-width:var(--maxw);margin:0 auto;padding:0 24px 40px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .p-cta{max-width:var(--maxw);margin:0 auto;padding:56px 24px;text-align:center;border-top:1px solid var(--line)}
+
+  @media(max-width:860px){.plans-grid{grid-template-columns:1fr 1fr}.mod-grid{grid-template-columns:1fr}}
+  @media(max-width:520px){.plans-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-theme="dark">
+<script>try{var _t=localStorage.getItem('gv-theme');if(_t){document.body.setAttribute('data-theme',_t);window.__gvTheme=_t;}}catch(e){}</script>
+
+<header class="page-hero">
+  <div class="eyebrow center">Pricing</div>
+  <h1 class="h1">Start free. Add only <span class="fade">what your trading needs.</span></h1>
+  <p class="lead">No bloated all-or-nothing tiers. A genuinely useful free core, then modules you assemble into a personal risk stack — or take a preset. Founding members lock lifetime pricing.</p>
+</header>
+
+<section class="plans">
+  <div class="plans-grid">
+    <div class="plan free">
+      <div class="pname">Free core</div>
+      <div class="ptag">The container</div>
+      <div class="price">$0<small> forever</small></div>
+      <ul>
+        <li>Wheel-strategy tracker</li>
+        <li>1 broker connection + CSV import</li>
+        <li>Exposure breakdowns &amp; market heatmap</li>
+        <li>Vol Desk basics — IV rank, expected move</li>
+        <li>3 backtests / day</li>
+        <li>Shareable watermarked risk cards</li>
+      </ul>
+      <a class="pcta" href="index.html#join">Join the waitlist</a>
+    </div>
+    <div class="plan">
+      <div class="pname">Theta Collector</div>
+      <div class="ptag">Income &amp; wheel</div>
+      <div class="price">$11.99<small> /mo</small></div>
+      <ul>
+        <li>Everything in Free core</li>
+        <li>Multi-broker unifier</li>
+        <li>Net Greeks &amp; exposure suite</li>
+        <li>Wheel Pro — multi-account, tax lots</li>
+        <li>Value cross-screener</li>
+      </ul>
+      <a class="pcta" href="index.html#join">Join the waitlist</a>
+    </div>
+    <div class="plan hi">
+      <div class="pname">Vol &amp; Macro</div>
+      <div class="ptag">Options &amp; vol</div>
+      <div class="price">$19.99<small> /mo</small></div>
+      <ul>
+        <li>Everything in Free core</li>
+        <li>Net Greeks &amp; exposure suite</li>
+        <li>Quant risk &amp; stress lab</li>
+        <li>Dealer Desk &amp; Probability Studio</li>
+        <li>What-if sandbox + Monte Carlo</li>
+      </ul>
+      <a class="pcta" href="index.html#join">Join the waitlist</a>
+    </div>
+    <div class="plan">
+      <div class="pname">Complete Suite</div>
+      <div class="ptag">Everything</div>
+      <div class="price">$29.99<small> /mo</small></div>
+      <ul>
+        <li>Every module included</li>
+        <li>All six options desks</li>
+        <li>Surface Lab (quant tier)</li>
+        <li>Alerts &amp; attribution</li>
+        <li>Priority support</li>
+      </ul>
+      <a class="pcta" href="index.html#join">Join the waitlist</a>
+    </div>
+  </div>
+</section>
+
+<section class="modules">
+  <h2>Or build your own stack</h2>
+  <p class="lead" style="max-width:64ch">Every module is independently subscribable. Mix them to match how you actually trade — the more you add, the more the multi-tool discount kicks in.</p>
+  <div class="mod-grid">
+    <div class="mod"><div class="mtop"><span class="mn">Multi-Broker Unifier</span><span class="mp">$4.99</span></div><p>Cross-broker consolidation and netting, per-lot cost basis.</p></div>
+    <div class="mod"><div class="mtop"><span class="mn">Greeks &amp; Exposure</span><span class="mp">$6.99</span></div><p>Net Greeks, true directional exposure, beta-weighted dollar exposure.</p></div>
+    <div class="mod"><div class="mtop"><span class="mn">Quant Risk &amp; Stress Lab</span><span class="mp">$9.99</span></div><p>VaR/CVaR, correlations, hidden-bets detector, stress tests, replays.</p></div>
+    <div class="mod"><div class="mtop"><span class="mn">Sandbox &amp; Simulator</span><span class="mp">$7.99</span></div><p>Mixed what-if sandbox, scenario compare, Monte Carlo, unlimited backtests.</p></div>
+    <div class="mod"><div class="mtop"><span class="mn">Wheel Pro</span><span class="mp">$3.99</span></div><p>Advanced wheel analytics — multi-account, tax-lot integration, history.</p></div>
+    <div class="mod"><div class="mtop"><span class="mn">Alerts &amp; Attribution</span><span class="mp">$3.99</span></div><p>Portfolio-aware alerts (email, push, Discord) and performance attribution.</p></div>
+    <div class="mod"><div class="mtop"><span class="mn">Vision Pack</span><span class="mp">$6.99</span></div><p>Cash-flow Sankey, 3D IV surface, correlation galaxy, risk-replay clips.</p></div>
+    <div class="mod"><div class="mtop"><span class="mn">Insider &amp; Event Radar</span><span class="mp">$4.99</span></div><p>Portfolio-aware insider, congressional, and buyback radar; earnings analyzer.</p></div>
+    <div class="mod"><div class="mtop"><span class="mn">Institutional Engine</span><span class="mp">$19.99</span></div><p>Objective optimizer, tax-aware rebalancing, intraday-fill options backtesting.</p></div>
+  </div>
+</section>
+
+<section class="faq">
+  <h2>Straight answers</h2>
+  <div class="faq-item"><h3>Is the free tier actually useful, or a trial?</h3><p>Actually useful, forever. The wheel tracker, exposure views, IV rank, and shareable cards are free permanently — no time limit. It's the container everything else plugs into.</p></div>
+  <div class="faq-item"><h3>Why modules instead of simple tiers?</h3><p>A wheel seller, a vol trader, and a multi-broker investor value almost disjoint feature sets. Modules mean you never pay for bloat. Prefer simplicity? The preset stacks behave like tiers.</p></div>
+  <div class="faq-item"><h3>What does "founding member" get me?</h3><p>Lifetime pricing locked on whatever stack you choose, plus a direct line to shape the roadmap. Waitlist members also vote on final pricing before launch.</p></div>
+  <div class="faq-item"><h3>Do you sell my data or take trades?</h3><p>Never. Broker connections are read-only via trusted aggregators; we never store credentials and never place trades. The platform is decision-support, not an advisor or a broker.</p></div>
+</section>
+
+<div class="price-note">&gt; Pricing is planned and not final — waitlist members vote before launch. Compute credits and the creator marketplace arrive in a later phase.</div>
+
+<section class="p-cta">
+  <div class="eyebrow center">Early access</div>
+  <h2 class="h2 center">Lock lifetime pricing.</h2>
+  <p class="lead center">Join the waitlist — founding members set the pricing and keep it for good.</p>
+  <p><a class="btn-ghost" href="index.html#join">Request access →</a></p>
+</section>
+
+<script src="shared.js"></script>
+</body>
+</html>

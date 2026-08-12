@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Value — GradientView</title>
+<meta name="description" content="The Graham-school toolkit — margin of safety, Piotroski F-score, distress and manipulation detectors — joined to the options desks. Find quality companies whose options pay you to own them.">
+<link rel="stylesheet" href="theme.css">
+<style>
+  .page-hero{max-width:var(--maxw);margin:0 auto;padding:56px 24px 40px}
+  .page-hero .lead{max-width:64ch}
+
+  /* cross-screener hero panel */
+  .xhero{max-width:var(--maxw);margin:0 auto 8px;padding:0 24px}
+  .xpanel{background:var(--panel-3);border:1px solid var(--line-2);box-shadow:0 24px 60px rgba(0,0,0,.45)}
+  [data-theme="light"] .xpanel{box-shadow:0 18px 44px rgba(20,20,20,.10)}
+  .xh{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);padding:12px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}
+  .xh .src{color:var(--dim)}
+  .xtable{width:100%;border-collapse:collapse;font-family:var(--mono)}
+  .xtable th{font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);text-align:right;padding:11px 16px;border-bottom:1px solid var(--line);font-weight:500}
+  .xtable th:first-child{text-align:left}
+  .xtable td{font-size:13.5px;padding:12px 16px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}
+  .xtable td:first-child{text-align:left;font-weight:600;color:var(--text)}
+  .xtable tr:last-child td{border-bottom:none}
+  .xtable .pass{color:var(--up)} .xtable .warn{color:var(--amber)}
+  .xnote{padding:12px 16px;font-family:var(--mono);font-size:12px;color:var(--muted);border-top:1px solid var(--line);background:var(--panel-2)}
+  .xnote b{color:var(--amber)}
+
+  /* metric blocks */
+  .vsec{max-width:var(--maxw);margin:0 auto;padding:56px 24px}
+  .vsec+.vsec{border-top:1px solid var(--line)}
+  .vsec h2{font-family:var(--serif);font-weight:700;font-size:30px;letter-spacing:-.01em;margin-bottom:12px}
+  .vsec .lead{max-width:66ch}
+  .vgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:8px}
+  .vcell{background:var(--panel);padding:22px 22px}
+  .vcell .vtop{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px}
+  .vcell h3{font-family:var(--serif);font-weight:600;font-size:18px}
+  .vcell p{font-size:14px;color:var(--muted);line-height:1.55}
+  .vcell p .cite{color:var(--dim);font-style:italic}
+
+  .v-cta{max-width:var(--maxw);margin:0 auto;padding:60px 24px;text-align:center;border-top:1px solid var(--line)}
+
+  @media(max-width:820px){.vgrid{grid-template-columns:1fr}
+    .xtable .hide-sm{display:none}}
+</style>
+</head>
+<body data-theme="dark">
+<script>try{var _t=localStorage.getItem('gv-theme');if(_t){document.body.setAttribute('data-theme',_t);window.__gvTheme=_t;}}catch(e){}</script>
+
+<header class="page-hero">
+  <div class="eyebrow">The value wing</div>
+  <h1 class="h1">Graham would own it. <span class="fade">Its options pay you to.</span></h1>
+  <p class="lead">Thetagang's first rule and Ben Graham's first principle are the same one: only sell puts on companies you'd be happy to own. GradientView is the only tool that joins a real value screen to the options desks — quality businesses, screened the Graham way, whose options currently pay rich premium.</p>
+</header>
+
+<!-- CROSS-SCREENER HERO -->
+<section class="xhero">
+  <div class="xpanel">
+    <div class="xh"><span>Cross-screener — "wheel-worthy value"</span><span class="src">F-score ≥ 7 · IV rank &gt; 50 · liquid options</span></div>
+    <table class="xtable">
+      <thead>
+        <tr><th>Ticker</th><th>F-score</th><th>Z-score</th><th class="hide-sm">P/B</th><th>IV rank</th><th>CSP yield</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>XYZ</td><td class="pass">8</td><td class="pass">3.4</td><td class="hide-sm">1.9</td><td class="warn">62</td><td class="up">18% ann.</td></tr>
+        <tr><td>ABC</td><td class="pass">7</td><td class="pass">4.1</td><td class="hide-sm">2.3</td><td class="warn">57</td><td class="up">21% ann.</td></tr>
+        <tr><td>DEF</td><td class="pass">8</td><td class="pass">5.2</td><td class="hide-sm">1.4</td><td class="warn">54</td><td class="up">16% ann.</td></tr>
+        <tr><td>GHI</td><td class="pass">7</td><td class="pass">3.8</td><td class="hide-sm">2.7</td><td class="warn">71</td><td class="up">27% ann.</td></tr>
+      </tbody>
+    </table>
+    <div class="xnote"><b>What this is:</b> companies that pass a Graham-quality screen <b>and</b> whose options are richly priced right now — sorted by the annualized premium of selling a cash-secured put. Illustrative tickers. This exists nowhere else at retail.</div>
+  </div>
+</section>
+
+<!-- VALUE METRICS -->
+<section class="vsec">
+  <h2>The Graham-school toolkit</h2>
+  <p class="lead">Graham's ethos was intellectual honesty about what you can and can't know — so every metric here is evidence-graded, exactly like the options desks. Value investors are precisely the audience that respects being told which tools are frameworks and which are validated.</p>
+  <div class="vgrid">
+    <div class="vcell"><div class="vtop"><h3>Defensive checklist</h3><span class="badge framework">Framework</span></div><p>Graham's seven criteria for the defensive investor — earnings stability, dividend record, moderate P/E and P/B — as a pass/fail scorecard. A discipline, not a backtested edge.</p></div>
+    <div class="vcell"><div class="vtop"><h3>Margin of safety</h3><span class="badge framework">Framework</span></div><p>Price against a conservative intrinsic-value estimate (Graham formula or a simple DCF) — with every assumption visible and editable. No black-box "fair value."</p></div>
+    <div class="vcell"><div class="vtop"><h3>Piotroski F-score</h3><span class="badge durable">Durable</span></div><p>A nine-point test of fundamental strength — profitability, leverage, efficiency. High scores have outperformed, with some post-publication decay. <span class="cite">Piotroski (2000).</span></p></div>
+    <div class="vcell"><div class="vtop"><h3>Gross profitability</h3><span class="badge durable">Durable</span></div><p>Gross profits to assets — one of the most robust quality factors, and a strong complement to cheapness. <span class="cite">Novy-Marx (2013).</span></p></div>
+    <div class="vcell"><div class="vtop"><h3>Altman Z-score</h3><span class="badge durable">Durable</span></div><p>Distress and bankruptcy risk from five ratios — still standard in credit analysis decades on. Flags the balance sheets to avoid. <span class="cite">Altman (1968).</span></p></div>
+    <div class="vcell"><div class="vtop"><h3>Beneish M-score</h3><span class="badge durable">Durable</span></div><p>An earnings-manipulation detector — famously would have flagged Enron before it fell. The honesty check on the numbers themselves. <span class="cite">Beneish (1999).</span></p></div>
+    <div class="vcell"><div class="vtop"><h3>NCAV / net-nets</h3><span class="badge conditional">Conditional</span></div><p>Graham's deep-value screen: price below net current asset value. Historically powerful, but almost no large-caps qualify today — shown with that caveat.</p></div>
+    <div class="vcell"><div class="vtop"><h3>Magic Formula &amp; accruals</h3><span class="badge decayed">Decayed</span></div><p>Greenblatt's earnings-yield-plus-quality rank and Sloan's accruals signal — real in-sample, mixed-to-decayed since. Context, not a mechanical buy list. <span class="cite">Sloan (1996).</span></p></div>
+  </div>
+</section>
+
+<!-- INTEGRATION -->
+<section class="vsec">
+  <h2>Woven into your book, not bolted on</h2>
+  <p class="lead">The value wing isn't a separate app — it feeds the portfolio spine and the sandbox directly.</p>
+  <div class="vgrid">
+    <div class="vcell"><div class="vtop"><h3>Portfolio fundamental profile</h3></div><p>Your whole book's weighted P/E, P/B, FCF yield, aggregate quality score, and look-through leverage — the fundamental character of what you actually own.</p></div>
+    <div class="vcell"><div class="vtop"><h3>Fundamental risk flags</h3></div><p>Holdings with a Z-score under 1.8 or a red M-score get flagged right beside their VaR contribution in the risk lab — distress risk sitting next to market risk.</p></div>
+    <div class="vcell"><div class="vtop"><h3>Drift alerts</h3></div><p>"MSFT's F-score dropped two points since you bought." "This holding's debt spiked this quarter." The thesis-breaking change, caught early.</p></div>
+    <div class="vcell"><div class="vtop"><h3>Screen → sandbox → wheel</h3></div><p>Find a wheel-worthy name, simulate the cash-secured put in the mixed sandbox, execute on your broker, and the wheel tracker picks up the cycle. One continuous workflow.</p></div>
+  </div>
+</section>
+
+<section class="v-cta">
+  <div class="eyebrow center">Two disciplines, one screen</div>
+  <h2 class="h2 center">Value tells you what to own. Options tell you when you're paid to.</h2>
+  <p class="lead center">The cross-screener is the feature no one else has — because no one else built the value wing and the options desks into the same product. That intersection is where a Graham investor and a premium seller turn out to be the same person.</p>
+  <p><a class="btn-ghost" href="desks.html">See the options desks →</a> &nbsp; <a class="btn-ghost" href="index.html#join">Request access →</a></p>
+</section>
+
+<script src="shared.js"></script>
+</body>
+</html>

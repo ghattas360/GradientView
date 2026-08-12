@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GradientView Trade like you can see</title>
+<meta name="description" content="Terminal-grade portfolio and options analytics for retail traders. Aggregate every broker, measure risk like a professional desk, and read every number in plain language.">
+<link rel="stylesheet" href="theme.css">
+<style>
+  .hero{max-width:100%;padding:44px 0 60px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:-1px 0 auto 0;width:100%;height:120%;
+    background:var(--hero-grad);
+    z-index:0;pointer-events:none;
+    -webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent 100%);mask-image:linear-gradient(to bottom,#000 55%,transparent 100%)}
+  .hero-inner{max-width:var(--maxw);margin:0 auto;padding:0 24px;position:relative;z-index:1}
+  .hero-top{display:grid;grid-template-columns:1.02fr 1.28fr;gap:44px;align-items:center}
+  .sub{color:var(--muted);font-size:17px;max-width:44ch;margin-bottom:30px}
+  .sub strong{color:var(--text);font-weight:500}
+
+  .workstation{background:var(--panel-3);border:1px solid var(--line-2);box-shadow:0 30px 80px rgba(0,0,0,.6)}
+  .ws-head{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--muted);text-transform:uppercase;border-bottom:1px solid var(--line)}
+  .ws-head .dot{color:var(--up);font-size:9px}
+  .ws-body{padding:10px 12px}
+  .gex-wrap{position:relative}
+  .interp{background:var(--panel-2);border-top:1px solid var(--line);padding:12px 15px;font-family:var(--mono);font-size:12.5px;line-height:1.6;color:var(--text)}
+  .interp .tagi{color:var(--amber);font-size:10px;letter-spacing:.09em;text-transform:uppercase;margin-right:8px}
+  .caret{display:inline-block;width:6px;height:13px;background:var(--amber);vertical-align:-2px;margin-left:1px;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  @media (prefers-reduced-motion: reduce){.caret{animation:none}}
+
+  .statstrip{max-width:var(--maxw);margin:34px auto 0;padding:0 24px}
+  .statstrip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .stat{background:var(--panel);padding:18px}
+  .stat .sv{font-family:var(--serif);font-size:26px;font-weight:600;letter-spacing:-.01em}
+  .stat .sk{font-size:12.5px;color:var(--muted);margin-top:3px}
+
+  /* wings overview  with background art */
+  .wings{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .wing{position:relative;background:var(--panel);padding:28px 24px;overflow:hidden}
+  .wing::before{content:"";position:absolute;inset:0;background-size:cover;background-position:center;opacity:.5;z-index:0;transition:opacity .2s}
+  .wing.spine::before{background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MjAiIGhlaWdodD0iNTIwIiB2aWV3Qm94PSIwIDAgNzIwIDUyMCI+PGRlZnM+PHJhZGlhbEdyYWRpZW50IGlkPSJnIiBjeD0iMzAlIiBjeT0iNDAlIiByPSI3MCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNGMEE5M0IiIHN0b3Atb3BhY2l0eT0iMC4xMCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0YwQTkzQiIgc3RvcC1vcGFjaXR5PSIwIi8+PC9yYWRpYWxHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjcyMCIgaGVpZ2h0PSI1MjAiIGZpbGw9IiMwQTBEMTIiLz48cmVjdCB3aWR0aD0iNzIwIiBoZWlnaHQ9IjUyMCIgZmlsbD0idXJsKCNnKSIvPjxjaXJjbGUgY3g9IjIwMS42MDAwMDAwMDAwMDAwMiIgY3k9IjI2MC4wIiByPSI0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRjBBOTNCIiBzdHJva2Utb3BhY2l0eT0iMC4xNDUiIHN0cm9rZS13aWR0aD0iMSIvPjxjaXJjbGUgY3g9IjIwMS42MDAwMDAwMDAwMDAwMiIgY3k9IjI2MC4wIiByPSI4MiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRjBBOTNCIiBzdHJva2Utb3BhY2l0eT0iMC4xMjgiIHN0cm9rZS13aWR0aD0iMSIvPjxjaXJjbGUgY3g9IjIwMS42MDAwMDAwMDAwMDAwMiIgY3k9IjI2MC4wIiByPSIxMjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0YwQTkzQiIgc3Ryb2tlLW9wYWNpdHk9IjAuMTEyIiBzdHJva2Utd2lkdGg9IjEiLz48Y2lyY2xlIGN4PSIyMDEuNjAwMDAwMDAwMDAwMDIiIGN5PSIyNjAuMCIgcj0iMTY2IiBmaWxsPSJub25lIiBzdHJva2U9IiNGMEE5M0IiIHN0cm9rZS1vcGFjaXR5PSIwLjA5NiIgc3Ryb2tlLXdpZHRoPSIxIi8+PGNpcmNsZSBjeD0iMjAxLjYwMDAwMDAwMDAwMDAyIiBjeT0iMjYwLjAiIHI9IjIwOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRjBBOTNCIiBzdHJva2Utb3BhY2l0eT0iMC4wODAiIHN0cm9rZS13aWR0aD0iMSIvPjxjaXJjbGUgY3g9IjIwMS42MDAwMDAwMDAwMDAwMiIgY3k9IjI2MC4wIiByPSIyNTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0YwQTkzQiIgc3Ryb2tlLW9wYWNpdHk9IjAuMDY0IiBzdHJva2Utd2lkdGg9IjEiLz48Y2lyY2xlIGN4PSIyMDEuNjAwMDAwMDAwMDAwMDIiIGN5PSIyNjAuMCIgcj0iMjkyIiBmaWxsPSJub25lIiBzdHJva2U9IiNGMEE5M0IiIHN0cm9rZS1vcGFjaXR5PSIwLjA0OCIgc3Ryb2tlLXdpZHRoPSIxIi8+PGNpcmNsZSBjeD0iMjAxLjYwMDAwMDAwMDAwMDAyIiBjeT0iMjYwLjAiIHI9IjMzNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRjBBOTNCIiBzdHJva2Utb3BhY2l0eT0iMC4wMzIiIHN0cm9rZS13aWR0aD0iMSIvPjxjaXJjbGUgY3g9IjIwMS42MDAwMDAwMDAwMDAwMiIgY3k9IjI2MC4wIiByPSIzNzYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0YwQTkzQiIgc3Ryb2tlLW9wYWNpdHk9IjAuMDIwIiBzdHJva2Utd2lkdGg9IjEiLz48Y2lyY2xlIGN4PSIyMDEuNjAwMDAwMDAwMDAwMDIiIGN5PSIyNjAuMCIgcj0iNDE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNGMEE5M0IiIHN0cm9rZS1vcGFjaXR5PSIwLjAyMCIgc3Ryb2tlLXdpZHRoPSIxIi8+PGxpbmUgeDE9IjIwMS42MDAwMDAwMDAwMDAwMiIgeTE9IjI2MC4wIiB4Mj0iNTgyIiB5Mj0iMjYwIiBzdHJva2U9IiNGMEE5M0IiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48bGluZSB4MT0iMjAxLjYwMDAwMDAwMDAwMDAyIiB5MT0iMjYwLjAiIHgyPSI1MzEiIHkyPSI0NTAiIHN0cm9rZT0iI0YwQTkzQiIgc3Ryb2tlLW9wYWNpdHk9IjAuMDUiIHN0cm9rZS13aWR0aD0iMSIvPjxsaW5lIHgxPSIyMDEuNjAwMDAwMDAwMDAwMDIiIHkxPSIyNjAuMCIgeDI9IjM5MiIgeTI9IjU4OSIgc3Ryb2tlPSIjRjBBOTNCIiBzdHJva2Utb3BhY2l0eT0iMC4wNSIgc3Ryb2tlLXdpZHRoPSIxIi8+PGxpbmUgeDE9IjIwMS42MDAwMDAwMDAwMDAwMiIgeTE9IjI2MC4wIiB4Mj0iMjAyIiB5Mj0iNjQwIiBzdHJva2U9IiNGMEE5M0IiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48bGluZSB4MT0iMjAxLjYwMDAwMDAwMDAwMDAyIiB5MT0iMjYwLjAiIHgyPSIxMiIgeTI9IjU4OSIgc3Ryb2tlPSIjRjBBOTNCIiBzdHJva2Utb3BhY2l0eT0iMC4wNSIgc3Ryb2tlLXdpZHRoPSIxIi8+PGxpbmUgeDE9IjIwMS42MDAwMDAwMDAwMDAwMiIgeTE9IjI2MC4wIiB4Mj0iLTEyNyIgeTI9IjQ1MCIgc3Ryb2tlPSIjRjBBOTNCIiBzdHJva2Utb3BhY2l0eT0iMC4wNSIgc3Ryb2tlLXdpZHRoPSIxIi8+PGxpbmUgeDE9IjIwMS42MDAwMDAwMDAwMDAwMiIgeTE9IjI2MC4wIiB4Mj0iLTE3OCIgeTI9IjI2MCIgc3Ryb2tlPSIjRjBBOTNCIiBzdHJva2Utb3BhY2l0eT0iMC4wNSIgc3Ryb2tlLXdpZHRoPSIxIi8+PGxpbmUgeDE9IjIwMS42MDAwMDAwMDAwMDAwMiIgeTE9IjI2MC4wIiB4Mj0iLTEyNyIgeTI9IjcwIiBzdHJva2U9IiNGMEE5M0IiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48bGluZSB4MT0iMjAxLjYwMDAwMDAwMDAwMDAyIiB5MT0iMjYwLjAiIHgyPSIxMiIgeTI9Ii02OSIgc3Ryb2tlPSIjRjBBOTNCIiBzdHJva2Utb3BhY2l0eT0iMC4wNSIgc3Ryb2tlLXdpZHRoPSIxIi8+PGxpbmUgeDE9IjIwMS42MDAwMDAwMDAwMDAwMiIgeTE9IjI2MC4wIiB4Mj0iMjAyIiB5Mj0iLTEyMCIgc3Ryb2tlPSIjRjBBOTNCIiBzdHJva2Utb3BhY2l0eT0iMC4wNSIgc3Ryb2tlLXdpZHRoPSIxIi8+PGxpbmUgeDE9IjIwMS42MDAwMDAwMDAwMDAwMiIgeTE9IjI2MC4wIiB4Mj0iMzkyIiB5Mj0iLTY5IiBzdHJva2U9IiNGMEE5M0IiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48bGluZSB4MT0iMjAxLjYwMDAwMDAwMDAwMDAyIiB5MT0iMjYwLjAiIHgyPSI1MzEiIHkyPSI3MCIgc3Ryb2tlPSIjRjBBOTNCIiBzdHJva2Utb3BhY2l0eT0iMC4wNSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+")}
+  .wing.market::before{background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MjAiIGhlaWdodD0iNTIwIiB2aWV3Qm94PSIwIDAgNzIwIDUyMCI+PGRlZnM+PHJhZGlhbEdyYWRpZW50IGlkPSJnIiBjeD0iNzAlIiBjeT0iNDAlIiByPSI3MCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM0QTkwRDkiIHN0b3Atb3BhY2l0eT0iMC4xMCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzRBOTBEOSIgc3RvcC1vcGFjaXR5PSIwIi8+PC9yYWRpYWxHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjcyMCIgaGVpZ2h0PSI1MjAiIGZpbGw9IiMwQTBEMTIiLz48cmVjdCB3aWR0aD0iNzIwIiBoZWlnaHQ9IjUyMCIgZmlsbD0idXJsKCNnKSIvPjxyZWN0IHg9IjMwIiB5PSIyODQiIHdpZHRoPSIxNCIgaGVpZ2h0PSI5MCIgZmlsbD0iIzMzQzA4QSIgZmlsbC1vcGFjaXR5PSIwLjEwIi8+PHJlY3QgeD0iNTYiIHk9IjMxMSIgd2lkdGg9IjE0IiBoZWlnaHQ9IjYzIiBmaWxsPSIjRjA1MjRBIiBmaWxsLW9wYWNpdHk9IjAuMTAiLz48cmVjdCB4PSI4MiIgeT0iMTkwIiB3aWR0aD0iMTQiIGhlaWdodD0iMTg0IiBmaWxsPSIjMzNDMDhBIiBmaWxsLW9wYWNpdHk9IjAuMTAiLz48cmVjdCB4PSIxMDgiIHk9IjE5NiIgd2lkdGg9IjE0IiBoZWlnaHQ9IjE3OCIgZmlsbD0iI0YwNTI0QSIgZmlsbC1vcGFjaXR5PSIwLjEwIi8+PHJlY3QgeD0iMTM0IiB5PSIzNDEiIHdpZHRoPSIxNCIgaGVpZ2h0PSIzMyIgZmlsbD0iIzMzQzA4QSIgZmlsbC1vcGFjaXR5PSIwLjEwIi8+PHJlY3QgeD0iMTYwIiB5PSIyMjQiIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNTAiIGZpbGw9IiNGMDUyNEEiIGZpbGwtb3BhY2l0eT0iMC4xMCIvPjxyZWN0IHg9IjE4NiIgeT0iMjg1IiB3aWR0aD0iMTQiIGhlaWdodD0iODkiIGZpbGw9IiNGMDUyNEEiIGZpbGwtb3BhY2l0eT0iMC4xMCIvPjxyZWN0IHg9IjIxMiIgeT0iMTYxIiB3aWR0aD0iMTQiIGhlaWdodD0iMjEzIiBmaWxsPSIjMzNDMDhBIiBmaWxsLW9wYWNpdHk9IjAuMTAiLz48cmVjdCB4PSIyMzgiIHk9IjEzMCIgd2lkdGg9IjE0IiBoZWlnaHQ9IjI0NCIgZmlsbD0iIzMzQzA4QSIgZmlsbC1vcGFjaXR5PSIwLjEwIi8+PHJlY3QgeD0iMjY0IiB5PSIyNDMiIHdpZHRoPSIxNCIgaGVpZ2h0PSIxMzEiIGZpbGw9IiMzM0MwOEEiIGZpbGwtb3BhY2l0eT0iMC4xMCIvPjxyZWN0IHg9IjI5MCIgeT0iMzA2IiB3aWR0aD0iMTQiIGhlaWdodD0iNjgiIGZpbGw9IiNGMDUyNEEiIGZpbGwtb3BhY2l0eT0iMC4xMCIvPjxyZWN0IHg9IjMxNiIgeT0iMzA2IiB3aWR0aD0iMTQiIGhlaWdodD0iNjgiIGZpbGw9IiMzM0MwOEEiIGZpbGwtb3BhY2l0eT0iMC4xMCIvPjxyZWN0IHg9IjM0MiIgeT0iMjExIiB3aWR0aD0iMTQiIGhlaWdodD0iMTYzIiBmaWxsPSIjRjA1MjRBIiBmaWxsLW9wYWNpdHk9IjAuMTAiLz48cmVjdCB4PSIzNjgiIHk9IjM0MSIgd2lkdGg9IjE0IiBoZWlnaHQ9IjMzIiBmaWxsPSIjMzNDMDhBIiBmaWxsLW9wYWNpdHk9IjAuMTAiLz48cmVjdCB4PSIzOTQiIHk9IjMyOCIgd2lkdGg9IjE0IiBoZWlnaHQ9IjQ2IiBmaWxsPSIjRjA1MjRBIiBmaWxsLW9wYWNpdHk9IjAuMTAiLz48cmVjdCB4PSI0MjAiIHk9IjE5MyIgd2lkdGg9IjE0IiBoZWlnaHQ9IjE4MSIgZmlsbD0iI0YwNTI0QSIgZmlsbC1vcGFjaXR5PSIwLjEwIi8+PHJlY3QgeD0iNDQ2IiB5PSIxNDUiIHdpZHRoPSIxNCIgaGVpZ2h0PSIyMjkiIGZpbGw9IiNGMDUyNEEiIGZpbGwtb3BhY2l0eT0iMC4xMCIvPjxyZWN0IHg9IjQ3MiIgeT0iMTIzIiB3aWR0aD0iMTQiIGhlaWdodD0iMjUxIiBmaWxsPSIjRjA1MjRBIiBmaWxsLW9wYWNpdHk9IjAuMTAiLz48cmVjdCB4PSI0OTgiIHk9IjE5MiIgd2lkdGg9IjE0IiBoZWlnaHQ9IjE4MiIgZmlsbD0iIzMzQzA4QSIgZmlsbC1vcGFjaXR5PSIwLjEwIi8+PHJlY3QgeD0iNTI0IiB5PSIxMjAiIHdpZHRoPSIxNCIgaGVpZ2h0PSIyNTQiIGZpbGw9IiNGMDUyNEEiIGZpbGwtb3BhY2l0eT0iMC4xMCIvPjxyZWN0IHg9IjU1MCIgeT0iMTQzIiB3aWR0aD0iMTQiIGhlaWdodD0iMjMxIiBmaWxsPSIjMzNDMDhBIiBmaWxsLW9wYWNpdHk9IjAuMTAiLz48cmVjdCB4PSI1NzYiIHk9IjI0MyIgd2lkdGg9IjE0IiBoZWlnaHQ9IjEzMSIgZmlsbD0iIzMzQzA4QSIgZmlsbC1vcGFjaXR5PSIwLjEwIi8+PHJlY3QgeD0iNjAyIiB5PSIxOTciIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNzciIGZpbGw9IiMzM0MwOEEiIGZpbGwtb3BhY2l0eT0iMC4xMCIvPjxyZWN0IHg9IjYyOCIgeT0iMzEwIiB3aWR0aD0iMTQiIGhlaWdodD0iNjQiIGZpbGw9IiMzM0MwOEEiIGZpbGwtb3BhY2l0eT0iMC4xMCIvPjxyZWN0IHg9IjY1NCIgeT0iMzIwIiB3aWR0aD0iMTQiIGhlaWdodD0iNTQiIGZpbGw9IiNGMDUyNEEiIGZpbGwtb3BhY2l0eT0iMC4xMCIvPjxyZWN0IHg9IjY4MCIgeT0iMjE4IiB3aWR0aD0iMTQiIGhlaWdodD0iMTU2IiBmaWxsPSIjRjA1MjRBIiBmaWxsLW9wYWNpdHk9IjAuMTAiLz48L3N2Zz4=")}
+  .wing.foundation::before{background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MjAiIGhlaWdodD0iNTIwIiB2aWV3Qm94PSIwIDAgNzIwIDUyMCI+PGRlZnM+PHJhZGlhbEdyYWRpZW50IGlkPSJnIiBjeD0iNTAlIiBjeT0iNzAlIiByPSI3MCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMzM0MwOEEiIHN0b3Atb3BhY2l0eT0iMC4wOSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzMzQzA4QSIgc3RvcC1vcGFjaXR5PSIwIi8+PC9yYWRpYWxHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjcyMCIgaGVpZ2h0PSI1MjAiIGZpbGw9IiMwQTBEMTIiLz48cmVjdCB3aWR0aD0iNzIwIiBoZWlnaHQ9IjUyMCIgZmlsbD0idXJsKCNnKSIvPjxsaW5lIHgxPSIwIiB5MT0iNjAiIHgyPSI3MjAiIHkyPSI2MCIgc3Ryb2tlPSIjMzNDMDhBIiBzdHJva2Utb3BhY2l0eT0iMC4xMjAiIHN0cm9rZS13aWR0aD0iMSIvPjxsaW5lIHgxPSIwIiB5MT0iMTA2IiB4Mj0iNzIwIiB5Mj0iMTA2IiBzdHJva2U9IiMzM0MwOEEiIHN0cm9rZS1vcGFjaXR5PSIwLjEwOCIgc3Ryb2tlLXdpZHRoPSIxIi8+PGxpbmUgeDE9IjAiIHkxPSIxNTIiIHgyPSI3MjAiIHkyPSIxNTIiIHN0cm9rZT0iIzMzQzA4QSIgc3Ryb2tlLW9wYWNpdHk9IjAuMDk2IiBzdHJva2Utd2lkdGg9IjEiLz48bGluZSB4MT0iMCIgeTE9IjE5OCIgeDI9IjcyMCIgeTI9IjE5OCIgc3Ryb2tlPSIjMzNDMDhBIiBzdHJva2Utb3BhY2l0eT0iMC4wODQiIHN0cm9rZS13aWR0aD0iMSIvPjxsaW5lIHgxPSIwIiB5MT0iMjQ0IiB4Mj0iNzIwIiB5Mj0iMjQ0IiBzdHJva2U9IiMzM0MwOEEiIHN0cm9rZS1vcGFjaXR5PSIwLjA3MiIgc3Ryb2tlLXdpZHRoPSIxIi8+PGxpbmUgeDE9IjAiIHkxPSIyOTAiIHgyPSI3MjAiIHkyPSIyOTAiIHN0cm9rZT0iIzMzQzA4QSIgc3Ryb2tlLW9wYWNpdHk9IjAuMDYwIiBzdHJva2Utd2lkdGg9IjEiLz48bGluZSB4MT0iMCIgeTE9IjMzNiIgeDI9IjcyMCIgeTI9IjMzNiIgc3Ryb2tlPSIjMzNDMDhBIiBzdHJva2Utb3BhY2l0eT0iMC4wNDgiIHN0cm9rZS13aWR0aD0iMSIvPjxsaW5lIHgxPSIwIiB5MT0iMzgyIiB4Mj0iNzIwIiB5Mj0iMzgyIiBzdHJva2U9IiMzM0MwOEEiIHN0cm9rZS1vcGFjaXR5PSIwLjAzNiIgc3Ryb2tlLXdpZHRoPSIxIi8+PGxpbmUgeDE9IjAiIHkxPSI0MjgiIHgyPSI3MjAiIHkyPSI0MjgiIHN0cm9rZT0iIzMzQzA4QSIgc3Ryb2tlLW9wYWNpdHk9IjAuMDI0IiBzdHJva2Utd2lkdGg9IjEiLz48bGluZSB4MT0iMCIgeTE9IjQ3NCIgeDI9IjcyMCIgeTI9IjQ3NCIgc3Ryb2tlPSIjMzNDMDhBIiBzdHJva2Utb3BhY2l0eT0iMC4wMjAiIHN0cm9rZS13aWR0aD0iMSIvPjxsaW5lIHgxPSI5MCIgeTE9IjQwIiB4Mj0iOTAiIHkyPSI1MjAiIHN0cm9rZT0iIzMzQzA4QSIgc3Ryb2tlLW9wYWNpdHk9IjAuMDQiIHN0cm9rZS13aWR0aD0iMSIvPjxsaW5lIHgxPSIyMTAiIHkxPSI0MCIgeDI9IjIxMCIgeTI9IjUyMCIgc3Ryb2tlPSIjMzNDMDhBIiBzdHJva2Utb3BhY2l0eT0iMC4wNCIgc3Ryb2tlLXdpZHRoPSIxIi8+PGxpbmUgeDE9IjMzMCIgeTE9IjQwIiB4Mj0iMzMwIiB5Mj0iNTIwIiBzdHJva2U9IiMzM0MwOEEiIHN0cm9rZS1vcGFjaXR5PSIwLjA0IiBzdHJva2Utd2lkdGg9IjEiLz48bGluZSB4MT0iNDUwIiB5MT0iNDAiIHgyPSI0NTAiIHkyPSI1MjAiIHN0cm9rZT0iIzMzQzA4QSIgc3Ryb2tlLW9wYWNpdHk9IjAuMDQiIHN0cm9rZS13aWR0aD0iMSIvPjxsaW5lIHgxPSI1NzAiIHkxPSI0MCIgeDI9IjU3MCIgeTI9IjUyMCIgc3Ryb2tlPSIjMzNDMDhBIiBzdHJva2Utb3BhY2l0eT0iMC4wNCIgc3Ryb2tlLXdpZHRoPSIxIi8+PGxpbmUgeDE9IjY5MCIgeTE9IjQwIiB4Mj0iNjkwIiB5Mj0iNTIwIiBzdHJva2U9IiMzM0MwOEEiIHN0cm9rZS1vcGFjaXR5PSIwLjA0IiBzdHJva2Utd2lkdGg9IjEiLz48L3N2Zz4=")}
+  [data-theme="light"] .wing::before{opacity:.16}
+  .wing::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,var(--panel) 88%);z-index:0}
+  .wing:hover::before{opacity:.75}
+  .wing>*{position:relative;z-index:1}
+  .wing .wk{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber-text);margin-bottom:92px}
+  .wing h3{font-family:var(--serif);font-weight:700;font-size:21px;letter-spacing:-.006em;margin-bottom:8px}
+  .wing p{font-size:14px;color:var(--muted);margin-bottom:14px;max-width:34ch}
+  .wing .go{font-family:var(--mono);font-size:12px;color:var(--amber-text)}
+
+  /* six desks borderless, seamless, floating like editorial rows */
+  .deskrows{display:flex;flex-direction:column;gap:64px}
+  .deskrow{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .deskrow .drtext{display:flex;flex-direction:column;justify-content:center}
+  .deskrow .drviz{position:relative;min-height:230px;background-color:var(--panel-3);background-size:cover;background-position:center;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+  [data-theme="light"] .deskrow .drviz{box-shadow:0 16px 40px rgba(20,20,20,.10)}
+  .deskrow:nth-child(even) .drtext{order:2}
+  .deskrow:nth-child(even) .drviz{order:1}
+  .drnum{font-family:var(--mono);font-size:11px;color:var(--amber);letter-spacing:.08em;margin-bottom:10px}
+  .deskrow h3{font-family:var(--serif);font-weight:700;font-size:26px;letter-spacing:-.01em;margin-bottom:4px}
+  .deskrow .drq{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:14px}
+  .deskrow p{font-size:14.5px;color:var(--muted);max-width:46ch;margin-bottom:16px;line-height:1.6}
+  .deskrow .drmetrics{display:flex;flex-wrap:wrap;gap:6px}
+  .deskrow .drm{font-family:var(--mono);font-size:11px;color:var(--muted);border:1px solid var(--line-2);padding:4px 9px}
+  .drviz.vol{background-image:url("desk 1.png")}  
+  .drviz.dealer{background-image:url("desk 2.png")}
+  .drviz.prob{background-image:url("desk 3.png")}
+  .drviz.event{background-image:url("desk 4.png")}
+  .drviz.surface{background-image:url("desk 5.png")}
+  .drviz.flow{background-image:url("desk 6.png")}
+  [data-theme="light"] .drviz{filter:saturate(.7) brightness(1.04)}
+  @media(max-width:900px){.hero-top{grid-template-columns:1fr;gap:30px}.wings{grid-template-columns:1fr}.statstrip-grid{grid-template-columns:1fr 1fr}
+    .wing .wk{margin-bottom:48px}
+    .deskrow{grid-template-columns:1fr;gap:24px}
+    .deskrow .drviz,.deskrow:nth-child(even) .drviz{order:2;min-height:180px}
+    .deskrow .drtext,.deskrow:nth-child(even) .drtext{order:1}
+    .deskrows{gap:44px}
+    .deskrow .drtext,.deskrow:nth-child(even) .drtext{order:1;border-left:none}}
+  @media(max-width:560px){.statstrip-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-theme="dark">
+<script>try{var _t=localStorage.getItem('gv-theme');if(_t){document.body.setAttribute('data-theme',_t);window.__gvTheme=_t;}}catch(e){}</script>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-top">
+      <div>
+        <div class="eyebrow">Terminal-grade risk · retail price</div>
+        <h1 class="h1">Trade Like You Can See. <br><span class="fade" style="font-size: 30px;">A quant risk desk for your own book.</span></h1>
+        <p class="sub">GradientView consolidates your positions across <strong>every broker</strong>, runs the analytics a professional desk runs VaR, correlations, dealer gamma, options-implied distributions and <strong>reads every number back in plain English</strong>.</p>
+        <form class="waitlist" data-endpoint="https://formspree.io/f/mwleblnv" data-success="ok-hero">
+          <input type="email" required placeholder="you@example.com" aria-label="Email address">
+          <button type="submit">Request access</button>
+        </form>
+        <div class="form-success" id="ok-hero">&gt; access requested. one email when the desk opens. ↗</div>
+        <p class="form-note">Founding members lock <span class="amber">lifetime pricing</span>. One email at launch nothing else.</p>
+      </div>
+      <div class="workstation" role="img" aria-label="Example gamma exposure chart with plain-language interpretation">
+        <div class="ws-head"><span><span class="dot">●</span> SPX · GAMMA EXPOSURE BY STRIKE</span><span>0DTE · DEALER γ</span></div>
+        <div class="ws-body"><div class="gex-wrap" id="gexchart"></div></div>
+        <div class="interp"><span class="tagi">READ</span><span id="typer"></span><span class="caret" id="caret"></span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="statstrip">
+  <div class="statstrip-grid">
+    <div class="stat"><div class="sv">6+</div><div class="sk">brokers, one book</div></div>
+    <div class="stat"><div class="sv amber">&lt;$30<span style="font-size:13px">/mo</span></div><div class="sk">vs $25,000/yr terminals</div></div>
+    <div class="stat"><div class="sv">100%</div><div class="sk">read-only · no credentials stored</div></div>
+    <div class="stat"><div class="sv">0</div><div class="sk">signals you decide, we compute</div></div>
+  </div>
+</div>
+
+<!-- three wings -->
+<section class="section">
+  <div class="eyebrow">One platform, three wings</div>
+  <h2 class="h2">Your book, the market, and where they meet.</h2>
+  <p class="lead">GradientView joins three things most tools keep separate: the risk inside your portfolio, the signals inside the options market, and the fundamentals underneath the stocks each explained, each graded by how much the evidence supports it.</p>
+  <div class="wings">
+    <a class="wing spine" href="portfolio.html">
+      <div class="wk">The spine</div>
+      <h3>Portfolio risk</h3>
+      <p>Aggregate every position and broker into one book. Net Greeks, VaR, correlations, the hidden bet you didn't know you'd made then simulate changes before you touch your broker.</p>
+      <span class="go">Explore the portfolio desk →</span>
+    </a>
+    <a class="wing market" href="desks.html">
+      <div class="wk">The market</div>
+      <h3>Options desks</h3>
+      <p>Six desks reading the options market: volatility premium, dealer gamma positioning, the market's implied probability distribution, event pricing, surface arbitrage, and flow.</p>
+      <span class="go">Explore the six desks →</span>
+    </a>
+    <a class="wing foundation" href="value.html">
+      <div class="wk">The foundation</div>
+      <h3>Value screener</h3>
+      <p>The Graham-school toolkit margin of safety, F-score, distress and manipulation detectors joined to the options desks in one screen: quality companies whose options pay you to own them.</p>
+      <span class="go">Explore the value wing →</span>
+    </a>
+  </div>
+</section>
+
+<!-- desks alternating rows -->
+<section class="section" style="padding-top:0">
+  <div class="eyebrow">The options desks</div>
+  <h2 class="h2">Read like a quant, not a firehose.</h2>
+  <p class="lead">Each desk answers one question, and every metric carries an evidence badge so you always know which of our own numbers to trust.</p>
+  <div class="deskrows">
+    <div class="deskrow">
+      <div class="drtext">
+        <div class="drnum">01 · VOL DESK</div>
+        <h3>Volatility &amp; premium</h3>
+        <div class="drq">Is premium rich or cheap right now?</div>
+        <p>Where implied vol sits versus its own history, the variance risk premium that pays option sellers, and the term-structure slope that flags stress before price does.</p>
+        <div class="drmetrics"><span class="drm">IV rank</span><span class="drm">VRP</span><span class="drm">Term structure</span><span class="drm">VIX regime</span></div>
+      </div>
+      <div class="drviz vol"></div>
+    </div>
+    <div class="deskrow">
+      <div class="drtext">
+        <div class="drnum">02 · DEALER DESK</div>
+        <h3>Dealer positioning</h3>
+        <div class="drq">Where are the hedging flows?</div>
+        <p>Gamma exposure by strike, the flip level where the regime changes, and the vanna and charm flows that move markets into expiry each labeled as model-inferred, with the dealer-sign assumption in your control.</p>
+        <div class="drmetrics"><span class="drm">GEX</span><span class="drm">Gamma flip</span><span class="drm">Vanna · charm</span><span class="drm">Pinning</span></div>
+      </div>
+      <div class="drviz dealer"></div>
+    </div>
+    <div class="deskrow">
+      <div class="drtext">
+        <div class="drnum">03 · PROBABILITY STUDIO</div>
+        <h3>Implied distributions</h3>
+        <div class="drq">What does the market actually expect?</div>
+        <p>The full risk-neutral probability curve extracted from option prices the market's own forecast of where a name lands plus implied skew, kurtosis, and crash probability.</p>
+        <div class="drmetrics"><span class="drm">Risk-neutral density</span><span class="drm">Implied moments</span><span class="drm">Crash probability</span></div>
+      </div>
+      <div class="drviz prob"></div>
+    </div>
+    <div class="deskrow">
+      <div class="drtext">
+        <div class="drnum">04 · EVENT LAB</div>
+        <h3>Event pricing</h3>
+        <div class="drq">How is this earnings priced?</div>
+        <p>The straddle-implied move against the history of what actually happened, and the IV-crush pattern per name so you know whether the event is rich or cheap before you trade it.</p>
+        <div class="drmetrics"><span class="drm">Implied vs realized</span><span class="drm">IV crush</span><span class="drm">Event variance</span></div>
+      </div>
+      <div class="drviz event"></div>
+    </div>
+    <div class="deskrow">
+      <div class="drtext">
+        <div class="drnum">05 · SURFACE LAB</div>
+        <h3>Surface &amp; structure</h3>
+        <div class="drq">Is the surface itself mispriced?</div>
+        <p>An arbitrage-free fitted surface with butterfly and calendar violation flags, plus options-implied borrow fees and box-spread funding rates structural signals extracted from no-arbitrage, not folklore.</p>
+        <div class="drmetrics"><span class="drm">SVI fit</span><span class="drm">Arbitrage flags</span><span class="drm">Implied borrow</span><span class="drm">Box funding</span></div>
+      </div>
+      <div class="drviz surface"></div>
+    </div>
+    <div class="deskrow">
+      <div class="drtext">
+        <div class="drnum">06 · FLOW ROOM</div>
+        <h3>Flow &amp; sentiment</h3>
+        <div class="drq">What is the crowd doing really?</div>
+        <p>Put-call ratios, option-to-stock volume, and unusual activity presented honestly as context, not sold as edge. The research says most of these decayed; we show you why, and put them in their place.</p>
+        <div class="drmetrics"><span class="drm">Put/call</span><span class="drm">O/S ratio</span><span class="drm">UOA context only</span></div>
+      </div>
+      <div class="drviz flow"></div>
+    </div>
+  </div>
+  <p style="margin-top:20px"><a class="btn-ghost" href="desks.html">See every metric and its evidence grade →</a></p>
+</section>
+
+<!-- methodology teaser -->
+<section class="section" style="padding-top:0">
+  <div class="grid-lines" style="grid-template-columns:1.3fr 1fr">
+    <div class="cell" style="padding:34px 32px">
+      <div class="eyebrow">Why you can trust the numbers</div>
+      <h2 class="h2" style="font-size:clamp(22px,2.6vw,28px)">We grade our own signals.</h2>
+      <p style="color:var(--muted);font-size:15px;max-width:52ch">Most tools sell every metric as an edge. We read the research instead. Every signal in GradientView carries a badge durable, conditional, decayed, or folklore with the paper and the replication status one tap away. When a popular metric doesn't hold up, we tell you, and put it in the education section instead of the trading screen.</p>
+      <p style="margin-top:20px"><a class="btn-ghost" href="methodology.html">Read the methodology →</a></p>
+    </div>
+    <div class="cell stack-sm" style="padding:34px 32px;justify-content:center;gap:12px">
+      <div><span class="badge durable">Durable</span> <span class="muted" style="font-size:13px;margin-left:8px">replicated, economically grounded</span></div>
+      <div><span class="badge conditional">Conditional</span> <span class="muted" style="font-size:13px;margin-left:8px">real, but model-dependent</span></div>
+      <div><span class="badge decayed">Decayed</span> <span class="muted" style="font-size:13px;margin-left:8px">was real, faded post-publication</span></div>
+      <div><span class="badge folklore">Folklore</span> <span class="muted" style="font-size:13px;margin-left:8px">popular, weak evidence</span></div>
+      <div><span class="badge framework">Framework</span> <span class="muted" style="font-size:13px;margin-left:8px">a discipline, not a backtested edge</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- final cta -->
+<section class="section center" id="join" style="border-top:1px solid var(--line)">
+  <div class="eyebrow center">Early access</div>
+  <h2 class="h2 center">Trade like you can see.</h2>
+  <p class="lead center">Join the private-beta waitlist. Founding members get lifetime pricing and a direct line to shape the roadmap.</p>
+  <form class="waitlist center" data-endpoint="https://formspree.io/f/mwleblnv" data-success="ok-final">
+    <input type="email" required placeholder="you@example.com" aria-label="Email address">
+    <button type="submit">Request access</button>
+  </form>
+  <div class="form-success" id="ok-final" style="margin:12px auto 0">&gt; access requested. one email when the desk opens. ↗</div>
+</section>
+
+<script src="gex-component.js"></script>
+<script src="shared.js"></script>
+<script>
+  buildGexChart('gexchart');
+  var msg="Spot sits below the 5588 gamma wall and above the 5578 flip dealers are long gamma here, pinning price and muting moves. Lose the flip and the tape gets violent. Your book is short vol into it.";
+  var el=document.getElementById('typer'),caret=document.getElementById('caret');
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced){el.textContent=msg;caret.style.display='none';}
+  else{var i=0;(function ty(){if(i<=msg.length){el.textContent=msg.slice(0,i++);setTimeout(ty,22);}else{caret.style.display='none';}})();}
+</script>
+</body>
+</html>
