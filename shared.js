@@ -2,6 +2,7 @@
 (function(){
   var PAGES = [
     {href:'index.html', label:'Home'},
+    {href:'features.html', label:'Features'},
     {href:'portfolio.html', label:'Portfolio'},
     {href:'desks.html', label:'Options Desks'},
     {href:'value.html', label:'Value'},
@@ -38,7 +39,7 @@
   footer.innerHTML =
     '<div class="footer-cols">'+
       '<div><div class="logo"><span class="mark"><img src="gv-logo-eye.png" alt="GradientView logo" style="width:100%;height:100%;object-fit:contain"></span><span><span class="q">Gradient</span>View</span></div><p class="tagline">A quant risk desk for your own book. Insight, not raw data.</p></div>'+
-      '<div><h4>Product</h4><a href="portfolio.html">Portfolio</a><a href="desks.html">Options Desks</a><a href="value.html">Value Screener</a><a href="pricing.html">Pricing</a></div>'+
+      '<div><h4>Product</h4><a href="features.html">All features</a><a href="portfolio.html">Portfolio</a><a href="desks.html">Options Desks</a><a href="value.html">Value Screener</a><a href="pricing.html">Pricing</a></div>'+
       '<div><h4>Learn</h4><a href="learn.html">Signal Atlas</a><a href="learn.html#paths">Learning paths</a><a href="methodology.html">Methodology</a><a href="methodology.html#evidence">Evidence grading</a></div>'+
       '<div><h4>Community</h4><a href="#">X / Twitter</a><a href="#">Discord</a><a href="#">Newsletter</a><a href="index.html#join">Waitlist</a></div>'+
     '</div>'+

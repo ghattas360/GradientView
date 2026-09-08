@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Features — GradientView</title>
+<meta name="description" content="Every tool GradientView gives you: cross-broker portfolio risk, strategy P/L modeling, wheel and income analyzers, six options desks, screeners, free calculators, and plain-language interpretation on every number.">
+<link rel="icon" type="image/png" href="gv-logo-eye.png">
+<link rel="apple-touch-icon" href="gv-logo-eye.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Features — GradientView">
+<meta property="og:description" content="Every tool GradientView gives you: cross-broker portfolio risk, strategy P/L modeling, wheel and income analyzers, six options desks, screeners, free calculators, and plain-language interpretation on every number.">
+<meta property="og:image" content="best%20so%20far.png">
+<meta property="og:image:width" content="1380">
+<meta property="og:image:height" content="752">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Features — GradientView">
+<meta name="twitter:description" content="Every tool GradientView gives you: cross-broker portfolio risk, strategy P/L modeling, wheel and income analyzers, six options desks, screeners, free calculators, and plain-language interpretation on every number.">
+<meta name="twitter:image" content="best%20so%20far.png">
+<link rel="stylesheet" href="theme.css">
+<style>
+  .page-hero{max-width:var(--maxw);margin:0 auto;padding:56px 24px 34px}
+  .page-hero .lead{max-width:66ch}
+
+  /* jump strip */
+  .jump{max-width:var(--maxw);margin:0 auto;padding:0 24px 8px}
+  .jump-in{display:flex;flex-wrap:wrap;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .jump-in a{background:var(--panel);flex:1;min-width:130px;padding:12px 14px;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);transition:color .15s,background .15s}
+  .jump-in a:hover{color:var(--amber-text);background:var(--panel-2)}
+
+  /* free-calculator callout strip */
+  .freestrip{max-width:var(--maxw);margin:26px auto 0;padding:0 24px}
+  .freestrip-in{border:1px solid var(--line-2);border-left:2px solid var(--up);background:var(--panel-2);padding:20px 24px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+  .freestrip-in h2{font-family:var(--serif);font-weight:700;font-size:21px;margin:0;letter-spacing:-.008em}
+  .freestrip-in p{font-size:14.5px;color:var(--muted);line-height:1.55;flex:1;min-width:280px;margin:0}
+
+  /* feature group */
+  .fgroup{max-width:var(--maxw);margin:0 auto;padding:46px 24px}
+  .fgroup+.fgroup{border-top:1px solid var(--line)}
+  .fg-intro{font-size:16px;color:var(--muted);max-width:74ch;margin-bottom:24px;line-height:1.65}
+  .fg-grid{grid-template-columns:repeat(2,1fr)}
+
+  /* one feature cell */
+  .feat{display:flex;flex-direction:column}
+  .feat-top{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:6px}
+  .feat h3{font-family:var(--serif);font-weight:600;font-size:18.5px;letter-spacing:-.005em;margin:0}
+  .feat .bwrap{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end;flex-shrink:0}
+  .feat p{font-size:14.5px;color:var(--muted);line-height:1.6}
+  .feat .deep{font-family:var(--mono);font-size:11.5px;color:var(--amber-text);margin-top:10px;display:inline-block}
+  .feat.flagship{background:var(--panel-2)}
+
+  /* calculator category rows */
+  .calc-grid{grid-template-columns:repeat(3,1fr)}
+  .calc{display:flex;flex-direction:column}
+  .calc .cname{font-family:var(--serif);font-weight:600;font-size:17px;margin-bottom:8px}
+  .calc ul{list-style:none;margin:0}
+  .calc li{font-family:var(--mono);font-size:12.5px;color:var(--muted);padding:4px 0 4px 15px;position:relative;line-height:1.5}
+  .calc li::before{content:"";position:absolute;left:0;top:10px;width:7px;height:1px;background:var(--up)}
+
+  .f-cta{max-width:var(--maxw);margin:0 auto;padding:60px 24px;text-align:center;border-top:1px solid var(--line)}
+
+  @media(max-width:860px){
+    .fg-grid,.calc-grid{grid-template-columns:1fr}
+    .feat-top{flex-direction:column;align-items:flex-start;gap:7px}
+    .feat .bwrap{justify-content:flex-start}
+  }
+</style>
+</head>
+<body data-theme="dark">
+<script>try{var _t=localStorage.getItem('gv-theme');if(_t){document.body.setAttribute('data-theme',_t);window.__gvTheme=_t;}}catch(e){}</script>
+
+<header class="page-hero">
+  <div class="eyebrow">The full catalog</div>
+  <h1 class="h1">Everything GradientView does. <br><span class="fade">In one place, plainly stated.</span></h1>
+  <p class="lead">One platform covering four things most traders assemble from four tools: the risk inside your portfolio, the models behind your strategies, the signals inside the options market, and the honest interpretation of all of it. Every feature below is listed with what it does and what the evidence says — including the ones we grade as weak.</p>
+</header>
+
+<nav class="jump" aria-label="Feature groups">
+  <div class="jump-in">
+    <a href="#portfolio">Portfolio &amp; risk</a>
+    <a href="#modeling">Strategy P/L</a>
+    <a href="#income">Income tools</a>
+    <a href="#desks">Options desks</a>
+    <a href="#screeners">Screeners</a>
+    <a href="#calculators">Free calculators</a>
+    <a href="#learn">Learning</a>
+  </div>
+</nav>
+
+<!-- FREE CALCULATOR CALLOUT -->
+<section class="freestrip">
+  <div class="freestrip-in">
+    <span class="badge free">Free</span>
+    <h2>The calculators need no account.</h2>
+    <p>The full options calculator suite — every payoff curve, from a single long call to an iron condor — is free to use with no login, no email, and no trial clock. <a class="amber" href="#calculators">See the suite →</a></p>
+  </div>
+</section>
+
+<!-- A — PORTFOLIO & RISK -->
+<section class="fgroup" id="portfolio">
+  <div class="eyebrow">A · The core</div>
+  <h2 class="h2">Portfolio &amp; risk</h2>
+  <p class="fg-intro">The spine of the product. Every position you hold, from every account, combined into one book — then measured the way a professional desk measures its own, with the numbers explained rather than dumped.</p>
+  <div class="grid-lines fg-grid">
+    <div class="cell feat">
+      <div class="feat-top"><h3>Cross-broker consolidation</h3><span class="bwrap"><span class="badge free">Free · 1 broker</span></span></div>
+      <p>Every account combined into one true book. Positions that offset across brokers finally net out, so you see the risk you actually carry instead of six partial views.</p>
+    </div>
+    <div class="cell feat">
+      <div class="feat-top"><h3>Net Greeks</h3></div>
+      <p>Delta, gamma, theta, and vega across your whole book in one view — including the beta-weighted directional exposure that tells you what you're really long.</p>
+    </div>
+    <div class="cell feat">
+      <div class="feat-top"><h3>Risk Lab</h3><span class="bwrap"><span class="badge durable">Durable</span></span></div>
+      <p>VaR and CVaR, a full correlation matrix, and the hidden-bets detector that surfaces the concentrated wager you didn't know you'd assembled across separate tickers.</p>
+    </div>
+    <div class="cell feat">
+      <div class="feat-top"><h3>Stress tests &amp; historical replays</h3></div>
+      <p>Run your current book through SPX −10%, VIX ×2, or March 2020 and see what breaks — before the market runs the test for you.</p>
+    </div>
+    <div class="cell feat">
+      <div class="feat-top"><h3>What-if sandbox</h3></div>
+      <p>Mix stock and option legs into a hypothetical trade and watch every portfolio metric recompute — margin, Greeks, VaR, correlation — before you touch your broker.</p>
+    </div>
+    <div class="cell feat">
+      <div class="feat-top"><h3>Performance attribution</h3></div>
+      <p>See whether your gains came from theta, direction, or volatility. Most traders never learn which of the three is actually paying them.</p>
+    </div>
+    <div class="cell feat">
+      <div class="feat-top"><h3>Portfolio-aware alerts</h3></div>
+      <p>Alerts that know your book: "your vega just doubled," "earnings in 3 days on your biggest gamma." Not another price ping on a ticker you no longer hold.</p>
+    </div>
+  </div>
+</section>
+
+<!-- B — STRATEGY P/L & MODELING -->
+<section class="fgroup" id="modeling">
+  <div class="eyebrow">B · Before you trade</div>
+  <h2 class="h2">Strategy P/L &amp; modeling</h2>
+  <p class="fg-intro">Payoff diagrams stop at expiration, which is the one day most trades never reach. These tools model the strategy across its whole life — at any date, at any volatility, before and after any adjustment you're considering.</p>
+  <div class="grid-lines fg-grid">
+    <div class="cell feat">
+      <div class="feat-top"><h3>Strategy P/L over time</h3></div>
+      <p>Plug in any options strategy and see expected P/L and Greeks at any date along the way — not just the expiration hockey stick every other tool draws.</p>
+    </div>
+    <div class="cell feat">
+      <div class="feat-top"><h3>Adjustment modeler</h3></div>
+      <p>Add a roll, a hedge, or an extra leg and compare the current and adjusted P/L curves side by side. Quantifies whether the adjustment actually helps, or just moves the problem.</p>
+    </div>
+    <div class="cell feat">
+      <div class="feat-top"><h3>IV-shift modeling</h3></div>
+      <p>Move implied volatility up or down and watch the before/after curves separate. The clearest way to understand what your vega exposure really costs you.</p>
+    </div>
+    <div class="cell feat">
+      <div class="feat-top"><h3>Roll analyzer</h3></div>
+      <p>See which strikes and expiries you can roll to for a net credit, with the added upside, new max profit, and the change in every Greek laid out per candidate.</p>
+    </div>
+  </div>
+</section>
+
+<!-- C — INCOME TOOLS -->
+<section class="fgroup" id="income">
+  <div class="eyebrow">C · For premium sellers</div>
+  <h2 class="h2">Income tools</h2>
+  <p class="fg-intro">Built for the wheel and the rest of the premium-selling world — the traders who need yield, assignment, and cost basis tracked correctly rather than approximated in a spreadsheet.</p>
+  <div class="grid-lines fg-grid">
+    <div class="cell feat">
+      <div class="feat-top"><h3>Cash-Secured Put analyzer</h3></div>
+      <p>Find high-yield puts filtered by annualized yield and probability of profit, so the premium you're chasing is measured against the risk you're taking to get it.</p>
+    </div>
+    <div class="cell feat">
+      <div class="feat-top"><h3>Covered Call analyzer</h3></div>
+      <p>The same discipline on the call side — yield, assignment odds, and what you give up in upside if the strike gets taken through.</p>
+    </div>
+    <div class="cell feat">
+      <div class="feat-top"><h3>Wheel tracker</h3><span class="bwrap"><span class="badge free">Free</span></span></div>
+      <p>Automatically tracks the full cycle — cash-secured put, assignment, covered call — with adjusted cost basis and true per-cycle return carried through every leg.</p>
+    </div>
+    <div class="cell feat">
+      <div class="feat-top"><h3>Trade Logger</h3></div>
+      <p>Records every open and close with FIFO lot cost basis and running realized P/L. The spreadsheet you keep meaning to maintain, maintained for you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- D — OPTIONS MARKET DESKS -->
+<section class="fgroup" id="desks">
+  <div class="eyebrow">D · The market</div>
+  <h2 class="h2">Options market desks</h2>
+  <p class="fg-intro">Six desks, each answering one question about what the options market is pricing. Every metric carries an evidence badge — and where a desk rests on inference rather than observation, we say so on the desk itself.</p>
+  <div class="grid-lines fg-grid">
+    <div class="cell feat">
+      <div class="feat-top"><h3>Vol Desk</h3><span class="bwrap"><span class="badge durable">Durable</span></span></div>
+      <p>IV rank, expected move, variance risk premium, and term structure — whether premium is rich or cheap, and what regime you're selling into.</p>
+      <a class="deep" href="desks.html#vol">Open the desk →</a>
+    </div>
+    <div class="cell feat">
+      <div class="feat-top"><h3>Dealer Desk</h3><span class="bwrap"><span class="badge conditional">Conditional</span></span></div>
+      <p>Gamma exposure by strike, the flip level where the regime changes, and vanna/charm hedging flows — with the dealer-sign assumption left visible and in your control.</p>
+      <a class="deep" href="desks.html#dealer">Open the desk →</a>
+    </div>
+    <div class="cell feat">
+      <div class="feat-top"><h3>Probability Studio</h3><span class="bwrap"><span class="badge durable">Durable</span></span></div>
+      <p>The market's own implied probability curve for where a name lands, extracted from option prices — plus implied skew, kurtosis, and crash probability.</p>
+      <a class="deep" href="desks.html#probability">Open the desk →</a>
+    </div>
+    <div class="cell feat">
+      <div class="feat-top"><h3>Event Lab</h3><span class="bwrap"><span class="badge durable">Durable</span></span></div>
+      <p>The straddle-implied earnings move against what actually happened in prior quarters, and the per-name IV crush pattern that follows the print.</p>
+      <a class="deep" href="desks.html#event">Open the desk →</a>
+    </div>
+    <div class="cell feat">
+      <div class="feat-top"><h3>Surface Lab</h3><span class="bwrap"><span class="badge durable">Durable</span><span class="badge framework">Quant tier</span></span></div>
+      <p>An arbitrage-free fitted surface with violation flags, plus options-implied borrow fees and box-spread funding rates — structural signals drawn from no-arbitrage, not folklore.</p>
+      <a class="deep" href="desks.html#surface">Open the desk →</a>
+    </div>
+    <div class="cell feat">
+      <div class="feat-top"><h3>Flow Room</h3><span class="bwrap"><span class="badge folklore">Folklore</span></span></div>
+      <p>Put/call ratios, option-to-stock volume, and unusual activity — shown because you'll look for them, labeled honestly because the research says most of this decayed.</p>
+      <a class="deep" href="desks.html#flow">Open the desk →</a>
+    </div>
+  </div>
+</section>
+
+<!-- E — SCREENERS -->
+<section class="fgroup" id="screeners">
+  <div class="eyebrow">E · Finding candidates</div>
+  <h2 class="h2">Screeners</h2>
+  <p class="fg-intro">Screening on options data or fundamentals is common. Screening on both at once — quality companies whose options happen to pay richly — is the thing almost nobody does, and it's our flagship.</p>
+  <div class="grid-lines fg-grid">
+    <div class="cell feat">
+      <div class="feat-top"><h3>IV rank / IV percentile screener</h3><span class="bwrap"><span class="badge free">Free · top 50</span></span></div>
+      <p>Scan stocks and ETFs by IV rank, IV percentile, and historical-vol trend to find where premium is richest right now.</p>
+    </div>
+    <div class="cell feat flagship">
+      <div class="feat-top"><h3>Wheel-worthy value cross-screener</h3><span class="bwrap"><span class="badge durable">Durable</span></span></div>
+      <p>The flagship. Quality companies — Piotroski F-score ≥ 7 — whose options pay rich premium — IV rank above 50. Businesses worth owning if you get assigned, paying you well to wait.</p>
+      <a class="deep" href="value.html">See the value wing →</a>
+    </div>
+    <div class="cell feat">
+      <div class="feat-top"><h3>Fundamental screener</h3></div>
+      <p>Graham-school presets with F-score, Z-score, and M-score — quality, distress, and earnings-manipulation checks in one pass.</p>
+    </div>
+  </div>
+</section>
+
+<!-- F — FREE CALCULATORS -->
+<section class="fgroup" id="calculators">
+  <div class="eyebrow">F · No account needed</div>
+  <h2 class="h2">Free calculators</h2>
+  <p class="fg-intro">A suite of standalone options calculators: type in a contract's parameters and read the payoff curve. No login, no email, no trial. They stay free — they're how most people meet us.</p>
+  <div class="grid-lines calc-grid">
+    <div class="cell calc">
+      <div class="cname">Single leg <span class="badge free">Free</span></div>
+      <ul><li>Long call</li><li>Short call</li><li>Long put</li><li>Short put</li></ul>
+    </div>
+    <div class="cell calc">
+      <div class="cname">Vertical spreads <span class="badge free">Free</span></div>
+      <ul><li>Bull call spread</li><li>Bear call spread</li><li>Bull put spread</li><li>Bear put spread</li></ul>
+    </div>
+    <div class="cell calc">
+      <div class="cname">Multi-leg <span class="badge free">Free</span></div>
+      <ul><li>Straddle</li><li>Strangle</li><li>Iron condor</li><li>Iron butterfly</li></ul>
+    </div>
+    <div class="cell calc">
+      <div class="cname">Income <span class="badge free">Free</span></div>
+      <ul><li>Covered call</li><li>Cash-secured put</li><li>Poor man's covered call</li></ul>
+    </div>
+    <div class="cell calc">
+      <div class="cname">Analysis tools <span class="badge free">Free</span></div>
+      <ul><li>Options pricing</li><li>Implied volatility</li><li>Theta decay curve</li><li>Expected move</li></ul>
+    </div>
+    <div class="cell calc">
+      <div class="cname">How they work</div>
+      <ul><li>Enter strike, expiry, IV</li><li>Read the payoff curve</li><li>Nothing saved, nothing asked</li><li>Launching with the beta</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- G — LEARNING & HONESTY -->
+<section class="fgroup" id="learn">
+  <div class="eyebrow">G · Why you can trust it</div>
+  <h2 class="h2">Learning &amp; honesty</h2>
+  <p class="fg-intro">The layer that makes the rest usable. Every number is explained in plain English, every signal is graded by the evidence behind it, and the metrics that don't hold up are taught rather than sold.</p>
+  <div class="grid-lines fg-grid">
+    <div class="cell feat">
+      <div class="feat-top"><h3>The READ layer</h3><span class="bwrap"><span class="badge framework">Framework</span></span></div>
+      <p>Plain-language interpretation on every metric. Not "GEX: 4.2B" but what that means for your positions, in a sentence you can act on.</p>
+    </div>
+    <div class="cell feat">
+      <div class="feat-top"><h3>The Signal Atlas</h3></div>
+      <p>An interactive map of every concept in the platform and how they connect — the reference you grow into as your trading gets more sophisticated.</p>
+      <a class="deep" href="learn.html">Open the atlas →</a>
+    </div>
+    <div class="cell feat">
+      <div class="feat-top"><h3>Evidence grading &amp; anti-lessons</h3><span class="bwrap"><span class="badge durable">Durable</span><span class="badge folklore">Folklore</span></span></div>
+      <p>We grade our own signals — durable, conditional, decayed, folklore, framework — with the paper and replication status one tap away, and teach what doesn't work instead of hiding it.</p>
+      <a class="deep" href="methodology.html">Read the methodology →</a>
+    </div>
+  </div>
+</section>
+
+<section class="f-cta" id="join">
+  <div class="eyebrow center">Early access</div>
+  <h2 class="h2 center">Every tool, one desk.</h2>
+  <p class="lead center">Join the private-beta waitlist. Founding members lock lifetime pricing and help decide which of these ships first.</p>
+  <form class="waitlist center" data-endpoint="https://formspree.io/f/mwleblnv" data-success="ok-features">
+    <input type="email" required placeholder="you@example.com" aria-label="Email address">
+    <button type="submit">Request access</button>
+  </form>
+  <div class="form-success" id="ok-features" style="margin:12px auto 0">&gt; access requested. one email when the desk opens. ↗</div>
+  <p style="margin-top:22px"><a class="btn-ghost" href="pricing.html">See what each tier includes →</a></p>
+</section>
+
+<script src="shared.js"></script>
+</body>
+</html>
