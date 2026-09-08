@@ -39,6 +39,14 @@
   .desk-q{font-family:var(--serif);font-style:italic;font-size:21px;color:var(--muted);margin-bottom:18px}
   .desk-block>.desk-intro{font-size:17px;color:var(--muted);max-width:70ch;margin-bottom:24px}
 
+  /* desk screenshot */
+  .desk-shot{border:1px solid var(--line-2);background:var(--panel-3);box-shadow:0 20px 50px rgba(0,0,0,.35);margin-bottom:22px}
+  [data-theme="light"] .desk-shot{box-shadow:0 16px 40px rgba(20,20,20,.10)}
+  .desk-shot img{width:100%;height:auto;display:block}
+  [data-theme="light"] .desk-shot img{filter:saturate(.7) brightness(1.04)}
+  .desk-shot figcaption{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--muted);padding:10px 14px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .desk-shot figcaption .illus{color:var(--dim);text-transform:uppercase;letter-spacing:.07em;font-size:10px;white-space:nowrap}
+
   /* metric rows */
   .metrics{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
   .metric{background:var(--panel);padding:18px 20px;display:grid;grid-template-columns:240px 1fr auto;gap:24px;align-items:start}
@@ -90,6 +98,10 @@
   <div class="desk-head"><span class="desk-idx">01</span><h2>Vol Desk</h2></div>
   <div class="desk-q">Is premium rich or cheap, and what regime am I in?</div>
   <p class="desk-intro">The strongest-evidence desk in the product — and the one premium sellers live in. It reads where implied volatility sits, whether the market is paying you to sell options, and whether the term structure is warning of stress.</p>
+  <figure class="desk-shot">
+    <img src="desk 1.png" width="1408" height="768" alt="Vol Desk — implied volatility surface versus history, variance risk premium panel, and term-structure slope with a cheap-to-rich verdict meter">
+    <figcaption><span>Vol Desk — IV vs. history, variance risk premium, term-structure slope</span><span class="illus">Illustrative</span></figcaption>
+  </figure>
   <div class="metrics">
     <div class="metric free-hook">
       <div class="mname">IV rank & percentile<span class="msub">Free hook</span></div>
@@ -128,6 +140,10 @@
   <div class="desk-head"><span class="desk-idx">02</span><h2>Dealer Desk</h2></div>
   <div class="desk-q">Where are the hedging flows?</div>
   <p class="desk-intro">Dealer positioning drives mechanical hedging flows that dampen or amplify moves. Every metric here is <strong>model-inferred</strong> — the dealer's side of each trade is estimated, not observed — so each wears a badge and gives you a visible sign-assumption toggle. Honesty is the differentiator against black-box gamma tools.</p>
+  <figure class="desk-shot">
+    <img src="desk 2.png" width="1408" height="768" loading="lazy" alt="Dealer Desk — net dealer gamma exposure by strike with the flip level marked, vanna and charm flow panels, and a visible dealer sign-assumption control">
+    <figcaption><span>Dealer Desk — gamma by strike, flip level, vanna &amp; charm flows</span><span class="illus">Illustrative</span></figcaption>
+  </figure>
   <div class="metrics">
     <div class="metric">
       <div class="mname">GEX — gamma by strike<span class="msub">dealer γ map</span></div>
@@ -161,6 +177,10 @@
   <div class="desk-head"><span class="desk-idx">03</span><h2>Probability Studio</h2></div>
   <div class="desk-q">What does the market actually expect?</div>
   <p class="desk-intro">Options prices encode the market's full probability distribution of where a name will land — not a guess, an identity. This is genuine retail whitespace: almost nobody renders the implied distribution visually.</p>
+  <figure class="desk-shot">
+    <img src="desk 3.png" width="1408" height="768" loading="lazy" alt="Probability Studio — the risk-neutral probability curve for SPX with implied skew histogram, fat-tail annotation, and an implied crash probability readout">
+    <figcaption><span>Probability Studio — risk-neutral curve, implied skew, crash probability</span><span class="illus">Illustrative</span></figcaption>
+  </figure>
   <div class="metrics">
     <div class="metric">
       <div class="mname">Risk-neutral density<span class="msub">Breeden-Litzenberger</span></div>
@@ -189,6 +209,10 @@
   <div class="desk-head"><span class="desk-idx">04</span><h2>Event Lab</h2></div>
   <div class="desk-q">How is this event priced?</div>
   <p class="desk-intro">Earnings and scheduled events concentrate volatility. This desk compares what options are pricing to what history actually delivered — highly comprehensible, and beatable on interpretation.</p>
+  <figure class="desk-shot">
+    <img src="desk 4.png" width="1394" height="466" loading="lazy" alt="Event Lab — straddle-implied earnings move charted against historical actual moves by quarter, beside a per-name IV crush pattern">
+    <figcaption><span>Event Lab — straddle-implied move vs. historical actuals, IV-crush pattern</span><span class="illus">Illustrative</span></figcaption>
+  </figure>
   <div class="metrics">
     <div class="metric">
       <div class="mname">Implied vs realized move<span class="msub">earnings</span></div>
@@ -213,6 +237,10 @@
   <div class="desk-head"><span class="desk-idx">05</span><h2>Surface Lab</h2><span class="badge framework">Quant tier</span></div>
   <div class="desk-q">Is the surface itself mispriced?</div>
   <p class="desk-intro">The advanced desk: fit the whole implied-vol surface, hunt no-arbitrage violations, and extract structural signals that live in the relationships between options rather than any single one.</p>
+  <figure class="desk-shot">
+    <img src="desk 5.png" width="1063" height="614" loading="lazy" alt="Surface Lab — an arbitrage-free fitted volatility surface with butterfly and calendar violations flagged, alongside options-implied borrow fees and box-spread funding rates">
+    <figcaption><span>Surface Lab — fitted surface &amp; violation flags, implied borrow, box funding</span><span class="illus">Illustrative</span></figcaption>
+  </figure>
   <div class="metrics">
     <div class="metric">
       <div class="mname">Skew &amp; risk reversal<span class="msub">25-delta</span></div>
@@ -247,6 +275,10 @@
   <div class="desk-head"><span class="desk-idx">06</span><h2>Flow Room</h2></div>
   <div class="desk-q">What is sentiment saying — honestly?</div>
   <p class="desk-intro">This desk exists because traders expect it — but we frame it truthfully. Most single-name "options predict stocks" signals were strong in-sample and faded after publication, or turn out to be borrow-fee artifacts. So the Flow Room is <strong>context, not edge</strong>, and we say so on every metric.</p>
+  <figure class="desk-shot">
+    <img src="desk 6.png" width="909" height="636" loading="lazy" alt="Flow Room — option-to-stock volume ratio annotated with documented signal decay, put/call ratios against their contextual averages, and unusual activity carrying a context-only caveat">
+    <figcaption><span>Flow Room — put/call ratios, O/S volume, decay shown on the chart itself</span><span class="illus">Illustrative</span></figcaption>
+  </figure>
   <div class="metrics">
     <div class="metric">
       <div class="mname">Put/call ratios<span class="msub">volume &amp; OI</span></div>
