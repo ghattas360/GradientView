@@ -83,14 +83,24 @@
   .drviz.surface{background-image:url("desk 5.png")}
   .drviz.flow{background-image:url("desk 6.png")}
   [data-theme="light"] .drviz{filter:saturate(.7) brightness(1.04)}
-  @media(max-width:900px){.hero-top{grid-template-columns:1fr;gap:30px}.wings{grid-template-columns:1fr}.statstrip-grid{grid-template-columns:1fr 1fr}
+
+  /* features teaser tiles */
+  .ftiles{grid-template-columns:repeat(4,1fr)}
+  .ftile{display:block;padding:20px;transition:background .15s}
+  .ftile:hover{background:var(--panel-2)}
+  .ftile .fk{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber-text);margin-bottom:9px}
+  .ftile h3{font-family:var(--serif);font-weight:600;font-size:17px;letter-spacing:-.005em;margin-bottom:5px}
+  .ftile p{font-size:13px;color:var(--muted);line-height:1.5}
+  .ftile.all{background:var(--panel-2);display:flex;flex-direction:column;justify-content:center}
+  .ftile.all .go{font-family:var(--mono);font-size:12px;color:var(--amber-text);margin-top:6px}
+  @media(max-width:900px){.hero-top{grid-template-columns:1fr;gap:30px}.wings{grid-template-columns:1fr}.statstrip-grid{grid-template-columns:1fr 1fr}.ftiles{grid-template-columns:1fr 1fr}
     .wing .wk{margin-bottom:48px}
     .deskrow{grid-template-columns:1fr;gap:24px}
     .deskrow .drviz,.deskrow:nth-child(even) .drviz{order:2;min-height:180px}
     .deskrow .drtext,.deskrow:nth-child(even) .drtext{order:1}
     .deskrows{gap:44px}
     .deskrow .drtext,.deskrow:nth-child(even) .drtext{order:1;border-left:none}}
-  @media(max-width:560px){.statstrip-grid{grid-template-columns:1fr}}
+  @media(max-width:560px){.statstrip-grid{grid-template-columns:1fr}.ftiles{grid-template-columns:1fr}}
 </style>
 </head>
 <body data-theme="dark">
@@ -223,6 +233,47 @@
     </div>
   </div>
   <p style="margin-top:20px"><a class="btn-ghost" href="desks.html">See every metric and its evidence grade →</a></p>
+</section>
+
+<!-- features teaser -->
+<section class="section" style="padding-top:0">
+  <div class="eyebrow">One platform, every tool</div>
+  <h2 class="h2">The whole desk, in seven groups.</h2>
+  <p class="lead">Portfolio risk, strategy modeling, income tools, the options desks, screeners, free calculators, and the layer that explains all of it in plain English.</p>
+  <div class="grid-lines ftiles">
+    <a class="cell ftile" href="features.html#portfolio">
+      <div class="fk">A · Core</div><h3>Portfolio &amp; risk</h3>
+      <p>Every broker in one book, measured like a professional desk.</p>
+    </a>
+    <a class="cell ftile" href="features.html#modeling">
+      <div class="fk">B · Modeling</div><h3>Strategy P/L</h3>
+      <p>Any strategy at any date — not just the expiration hockey stick.</p>
+    </a>
+    <a class="cell ftile" href="features.html#income">
+      <div class="fk">C · Income</div><h3>Wheel &amp; premium</h3>
+      <p>CSP and covered-call analyzers, wheel tracking, cost basis kept straight.</p>
+    </a>
+    <a class="cell ftile" href="features.html#desks">
+      <div class="fk">D · Market</div><h3>Options desks</h3>
+      <p>Six desks reading what the options market is actually pricing.</p>
+    </a>
+    <a class="cell ftile" href="features.html#screeners">
+      <div class="fk">E · Screeners</div><h3>Finding candidates</h3>
+      <p>Quality companies whose options happen to pay you richly.</p>
+    </a>
+    <a class="cell ftile" href="features.html#calculators">
+      <div class="fk">F · Free</div><h3>Calculators</h3>
+      <p>Every payoff curve, from long call to iron condor. No login, no email.</p>
+    </a>
+    <a class="cell ftile" href="features.html#learn">
+      <div class="fk">G · Honesty</div><h3>Learning &amp; grades</h3>
+      <p>Plain-English reads, and every signal graded by its evidence.</p>
+    </a>
+    <a class="cell ftile all" href="features.html">
+      <h3>Every feature, explained.</h3>
+      <span class="go">See the full catalog →</span>
+    </a>
+  </div>
 </section>
 
 <!-- methodology teaser -->
